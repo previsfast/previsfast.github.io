@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — PrevisFast</title>
+<style>
+  :root {
+    --blu: #1a237e;
+    --blu-chiaro: #283593;
+    --gold: #f9a825;
+    --testo: #212121;
+    --testo-secondario: #616161;
+    --sfondo: #fafafa;
+    --bordo: #e0e0e0;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: var(--sfondo); color: var(--testo); line-height: 1.8; }
+  header { background: linear-gradient(135deg, var(--blu), var(--blu-chiaro)); color: white; padding: 48px 24px 32px; text-align: center; }
+  header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+  header p { font-size: 0.95rem; opacity: 0.8; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .lang-switch { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+  .lang-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 20px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-family: 'Helvetica Neue', Arial, sans-serif; transition: background 0.2s; }
+  .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,0.3); }
+  .container { max-width: 820px; margin: 40px auto; padding: 0 24px 60px; }
+  .update-box { background: #fff8e1; border-left: 4px solid var(--gold); padding: 12px 16px; border-radius: 4px; margin-bottom: 32px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.875rem; color: #5d4037; }
+  section { background: var(--card); border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; border: 1px solid var(--bordo); box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  section h2 { font-size: 1.15rem; color: var(--blu); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--bordo); font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  section h2 .num { background: var(--blu); color: white; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+  p { margin-bottom: 12px; font-size: 0.95rem; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 8px 0 12px 20px; font-size: 0.95rem; }
+  ul li { margin-bottom: 6px; }
+  .highlight { background: #e8eaf6; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.875rem; color: var(--blu); }
+  .warning { background: #fff3e0; border-left: 4px solid #ff9800; border-radius: 4px; padding: 12px 16px; margin: 12px 0; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.875rem; color: #e65100; }
+  .contact-box { background: linear-gradient(135deg, var(--blu), var(--blu-chiaro)); color: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; }
+  .contact-box h2 { color: white; font-size: 1.1rem; margin-bottom: 16px; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; }
+  .contact-box p { font-size: 0.95rem; opacity: 0.9; }
+  .contact-box a { color: var(--gold); text-decoration: none; }
+  .contact-box a:hover { text-decoration: underline; }
+  footer { text-align: center; padding: 24px; font-size: 0.8rem; color: var(--testo-secondario); font-family: 'Helvetica Neue', Arial, sans-serif; border-top: 1px solid var(--bordo); }
+  .lang-it, .lang-en { display: block; }
+  body.en .lang-it { display: none; }
+  body.en .lang-en { display: block; }
+  body:not(.en) .lang-en { display: none; }
+  body:not(.en) .lang-it { display: block; }
+  @media (max-width: 600px) { section { padding: 20px 18px; } header h1 { font-size: 1.5rem; } .container { padding: 0 16px 40px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>PrevisFast</h1>
+  <p class="lang-it">Informativa sulla Privacy</p>
+  <p class="lang-en">Privacy Policy</p>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('it')">🇮🇹 Italiano</button>
+    <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="update-box">
+    <span class="lang-it">📅 Ultimo aggiornamento: 26 maggio 2026</span>
+    <span class="lang-en">📅 Last updated: May 26, 2026</span>
+  </div>
+
+  <!-- 1. TITOLARE -->
+  <section>
+    <h2><span class="num">1</span>
+      <span class="lang-it">Titolare del Trattamento</span>
+      <span class="lang-en">Data Controller</span>
+    </h2>
+    <p class="lang-it">Il titolare del trattamento dei dati personali è:<br><br>
+      Giuseppe Di Dolce<br>
+      Agrigento (AG), Italia<br>
+      Email: <a href="mailto:privacy@previsfast.it">privacy@previsfast.it</a>
+    </p>
+    <p class="lang-en">The data controller for personal data is:<br><br>
+      Giuseppe Di Dolce<br>
+      Agrigento (AG), Italy<br>
+      Email: <a href="mailto:privacy@previsfast.it">privacy@previsfast.it</a>
+    </p>
+  </section>
+
+  <!-- 2. INTRODUZIONE -->
+  <section>
+    <h2><span class="num">2</span>
+      <span class="lang-it">Introduzione e Accettazione</span>
+      <span class="lang-en">Introduction and Acceptance</span>
+    </h2>
+    <p class="lang-it">La presente informativa descrive come PrevisFast raccoglie, utilizza e protegge i dati personali degli utenti, in conformità al Regolamento (UE) 2016/679 (GDPR) e alla normativa italiana sulla protezione dei dati personali.</p>
+    <p class="lang-en">This privacy policy describes how PrevisFast collects, uses, and protects users' personal data, in compliance with Regulation (EU) 2016/679 (GDPR) and applicable data protection legislation.</p>
+    <p class="lang-it">PrevisFast è un'applicazione Android per la gestione di preventivi professionali, destinata ad artigiani, liberi professionisti e piccole imprese.</p>
+    <p class="lang-en">PrevisFast is an Android application for managing professional quotes, designed for craftsmen, freelancers, and small businesses.</p>
+    <div class="highlight lang-it">
+      📋 L'utilizzo dell'applicazione implica la lettura e l'accettazione della presente informativa. L'accettazione viene registrata al primo avvio dell'app, prima di qualsiasi raccolta di dati. Per gli utenti che attivano il servizio Premium, l'informativa viene nuovamente presentata prima dell'autenticazione Google.
+    </div>
+    <div class="highlight lang-en">
+      📋 Use of the application implies reading and accepting this privacy policy. Acceptance is recorded at the first launch of the app, before any data collection. For users activating the Premium service, the policy is presented again before Google authentication.
+    </div>
+  </section>
+
+  <!-- 3. RESPONSABILITA DATI CLIENTI -->
+  <section>
+    <h2><span class="num">3</span>
+      <span class="lang-it">Responsabilità sui Dati dei Clienti dell'Utente</span>
+      <span class="lang-en">Responsibility for User's Customer Data</span>
+    </h2>
+    <p class="lang-it"><strong>Distinzione fondamentale tra titolari del trattamento:</strong></p>
+    <p class="lang-en"><strong>Fundamental distinction between data controllers:</strong></p>
+    <p class="lang-it">PrevisFast è uno <strong>strumento tecnico</strong> che consente all'utente di gestire i propri preventivi e i dati dei propri clienti. Con riferimento ai dati personali dei clienti dell'utente (nome, indirizzo, email, telefono, P.IVA, ecc.) inseriti nell'applicazione:</p>
+    <p class="lang-en">PrevisFast is a <strong>technical tool</strong> that allows users to manage their quotes and customer data. With regard to personal data of the user's customers (name, address, email, phone, VAT number, etc.) entered into the application:</p>
+    <ul>
+      <li class="lang-it">L'utente è il titolare autonomo del trattamento di tali dati ai sensi dell'art. 4 n. 7 GDPR, in quanto è lui a determinare le finalità e i mezzi del trattamento</li>
+      <li class="lang-en">The user is the autonomous data controller of such data pursuant to Art. 4(7) GDPR, as they determine the purposes and means of processing</li>
+      <li class="lang-it">Lo sviluppatore dell'app non accede mai ai dati dei clienti dell'utente, che rimangono cifrati sul dispositivo dell'utente</li>
+      <li class="lang-en">The app developer never accesses the user's customer data, which remains encrypted on the user's device</li>
+      <li class="lang-it">L'utente è responsabile di aver ottenuto le necessarie basi giuridiche (es. consenso, contratto) per trattare i dati personali dei propri clienti nell'app</li>
+      <li class="lang-en">The user is responsible for having obtained the necessary legal bases (e.g. consent, contract) to process their customers' personal data in the app</li>
+      <li class="lang-it">L'utente è responsabile della sicurezza fisica del proprio dispositivo e dell'accesso all'applicazione</li>
+      <li class="lang-en">The user is responsible for the physical security of their device and access to the application</li>
+    </ul>
+    <div class="warning lang-it">
+      ⚠️ PrevisFast declina qualsiasi responsabilità per l'utilizzo improprio dei dati dei clienti inseriti dall'utente nell'applicazione, per la perdita di dati dovuta a malfunzionamenti del dispositivo, e per eventuali violazioni del GDPR commesse dall'utente nel trattamento dei dati dei propri clienti.
+    </div>
+    <div class="warning lang-en">
+      ⚠️ PrevisFast disclaims any liability for improper use of customer data entered by the user into the application, for data loss due to device malfunctions, and for any GDPR violations committed by the user in processing their customers' data.
+    </div>
+  </section>
+
+  <!-- 4. DATI RACCOLTI -->
+  <section>
+    <h2><span class="num">4</span>
+      <span class="lang-it">Dati Raccolti da PrevisFast</span>
+      <span class="lang-en">Data Collected by PrevisFast</span>
+    </h2>
+    <p class="lang-it"><strong>4.1 Dati inseriti dall'utente (archiviati localmente sul dispositivo)</strong></p>
+    <p class="lang-en"><strong>4.1 Data entered by the user (stored locally on the device)</strong></p>
+    <ul>
+      <li class="lang-it">Dati del profilo aziendale (ragione sociale, indirizzo, P.IVA, contatti)</li>
+      <li class="lang-en">Business profile data (company name, address, VAT number, contacts)</li>
+      <li class="lang-it">Dati dei clienti dell'utente (nome, cognome, indirizzo, email, telefono, P.IVA) — vedi sezione 3</li>
+      <li class="lang-en">User's customer data (name, surname, address, email, phone, VAT number) — see section 3</li>
+      <li class="lang-it">Dati dei preventivi (descrizioni, importi, date)</li>
+      <li class="lang-en">Quote data (descriptions, amounts, dates)</li>
+      <li class="lang-it">Voci di catalogo e categorie</li>
+      <li class="lang-en">Catalog items and categories</li>
+      <li class="lang-it">Dati importati tramite file JSON (versione Premium) — l'utente è l'unico responsabile del contenuto e della provenienza del file importato</li>
+      <li class="lang-en">Data imported via JSON file (Premium version) — the user is solely responsible for the content and origin of the imported file</li>
+    </ul>
+    <div class="highlight lang-it">
+      ✅ Tutti questi dati sono archiviati esclusivamente sul dispositivo dell'utente, cifrati con crittografia AES-256. Non vengono mai trasmessi ai nostri server. Non vengono mai trasmessi automaticamente al di fuori del dispositivo. L'utente Premium può esportarli volontariamente in formato JSON/CSV a propria discrezione.
+    </div>
+    <div class="highlight lang-en">
+      ✅ All this data is stored exclusively on the user's device, encrypted with AES-256 encryption. It is never transmitted to our servers. It is never automatically transmitted outside the device. Premium users can voluntarily export it in JSON/CSV format at their own discretion.
+    </div>
+
+    <p class="lang-it"><strong>4.2 Dati raccolti tramite Firebase (solo per utenti che attivano il servizio Premium)</strong></p>
+    <p class="lang-en"><strong>4.2 Data collected via Firebase (only for users who activate the Premium service)</strong></p>
+    <p class="lang-it">Questi dati vengono raccolti <strong>solo dopo</strong> che l'utente ha esplicitamente scelto di attivare il servizio Premium e ha accettato l'autenticazione tramite Google Sign-In:</p>
+    <p class="lang-en">This data is collected <strong>only after</strong> the user has explicitly chosen to activate the Premium service and has accepted authentication via Google Sign-In:</p>
+    <ul>
+      <li class="lang-it">Indirizzo email dell'account Google (tramite Google Sign-In)</li>
+      <li class="lang-en">Google account email address (via Google Sign-In)</li>
+      <li class="lang-it">Nome visualizzato dell'account Google</li>
+      <li class="lang-en">Google account display name</li>
+      <li class="lang-it">Identificatore univoco utente (UID Firebase)</li>
+      <li class="lang-en">Unique user identifier (Firebase UID)</li>
+      <li class="lang-it">Stato dell'abbonamento (attivo/scaduto) e data di scadenza</li>
+      <li class="lang-en">Subscription status (active/expired) and expiry date</li>
+      <li class="lang-it">Token di acquisto Google Play (per verifica abbonamento)</li>
+      <li class="lang-en">Google Play purchase token (for subscription verification)</li>
+    </ul>
+
+    <p class="lang-it"><strong>4.3 Dati analitici anonimi</strong></p>
+    <p class="lang-en"><strong>4.3 Anonymous analytical data</strong></p>
+    <p class="lang-it">Tramite Google Analytics for Firebase vengono raccolti dati anonimi e aggregati sull'utilizzo dell'app (schermate visitate, funzioni utilizzate, durata sessioni). L'implementazione utilizza la funzione di anonimizzazione dell'identificatore dispositivo. Questi dati non consentono di identificare direttamente l'utente e vengono utilizzati esclusivamente per migliorare l'applicazione. La base giuridica è l'interesse legittimo (Art. 6.1.f GDPR). L'utente può disabilitare questa raccolta nelle impostazioni del proprio dispositivo Android tramite "Impostazioni → Google → Annunci → Disattiva personalizzazione annunci", oppure tramite le impostazioni di opt-out di Google Analytics.</p>
+    <p class="lang-en">Through Google Analytics for Firebase, anonymous and aggregated data about app usage (screens visited, features used, session duration) is collected. The implementation uses device identifier anonymization. This data does not directly allow identification of the user and is used exclusively to improve the application. The legal basis is legitimate interest (Art. 6.1.f GDPR). Users can disable this collection in their Android device settings via "Settings → Google → Ads → Opt out of Ads Personalization", or through Google Analytics opt-out settings.</p>
+  </section>
+
+  <!-- 5. FINALITA -->
+  <section>
+    <h2><span class="num">5</span>
+      <span class="lang-it">Finalità del Trattamento</span>
+      <span class="lang-en">Purpose of Processing</span>
+    </h2>
+    <ul>
+      <li class="lang-it">Fornire le funzionalità dell'applicazione (gestione preventivi, clienti, catalogo)</li>
+      <li class="lang-en">Providing app functionality (quote management, customers, catalog)</li>
+      <li class="lang-it">Gestione dell'abbonamento Premium e verifica dei pagamenti</li>
+      <li class="lang-en">Managing Premium subscription and payment verification</li>
+      <li class="lang-it">Autenticazione sicura tramite Google Sign-In (solo utenti Premium)</li>
+      <li class="lang-en">Secure authentication via Google Sign-In (Premium users only)</li>
+      <li class="lang-it">Miglioramento dell'applicazione tramite dati anonimi aggregati di utilizzo</li>
+      <li class="lang-en">Improving the application through anonymous aggregated usage data</li>
+      <li class="lang-it">Risposta a richieste di supporto e privacy</li>
+      <li class="lang-en">Responding to support and privacy requests</li>
+    </ul>
+    <p class="lang-it">I dati non vengono utilizzati per finalità diverse da quelle sopra indicate, né ceduti o venduti a terzi per scopi commerciali o pubblicitari.</p>
+    <p class="lang-en">Data is not used for purposes other than those indicated above, nor is it transferred or sold to third parties for commercial or advertising purposes.</p>
+  </section>
+
+  <!-- 6. BASE GIURIDICA -->
+  <section>
+    <h2><span class="num">6</span>
+      <span class="lang-it">Base Giuridica del Trattamento</span>
+      <span class="lang-en">Legal Basis for Processing</span>
+    </h2>
+    <ul>
+      <li class="lang-it"><strong>Esecuzione del contratto (Art. 6.1.b GDPR)</strong>: per fornire i servizi dell'app e gestire l'abbonamento Premium</li>
+      <li class="lang-en"><strong>Contract performance (Art. 6.1.b GDPR)</strong>: to provide app services and manage the Premium subscription</li>
+      <li class="lang-it"><strong>Consenso esplicito (Art. 6.1.a GDPR)</strong>: per l'autenticazione Google Sign-In — il consenso viene richiesto prima dell'autenticazione e può essere revocato in qualsiasi momento</li>
+      <li class="lang-en"><strong>Explicit consent (Art. 6.1.a GDPR)</strong>: for Google Sign-In authentication — consent is requested before authentication and can be withdrawn at any time</li>
+      <li class="lang-it"><strong>Interesse legittimo (Art. 6.1.f GDPR)</strong>: per la raccolta di dati analitici anonimi e aggregati finalizzati al miglioramento dell'applicazione, per la sicurezza tecnica del servizio e la prevenzione di frodi sull'abbonamento, nei limiti in cui non prevalgano gli interessi dell'utente. L'utente può in qualsiasi momento disabilitare la raccolta analitica nelle impostazioni del dispositivo</li>
+      <li class="lang-en"><strong>Legitimate interest (Art. 6.1.f GDPR)</strong>: for the collection of anonymous and aggregated analytical data aimed at improving the application, for technical security of the service and prevention of subscription fraud, to the extent that the user's interests do not override. Users can disable analytical collection at any time in device settings</li>
+    </ul>
+  </section>
+
+  <!-- 7. CONSERVAZIONE -->
+  <section>
+    <h2><span class="num">7</span>
+      <span class="lang-it">Conservazione dei Dati</span>
+      <span class="lang-en">Data Retention</span>
+    </h2>
+    <ul>
+      <li class="lang-it"><strong>Dati locali</strong>: conservati sul dispositivo finché l'utente non li elimina tramite l'app o disinstalla l'applicazione</li>
+      <li class="lang-en"><strong>Local data</strong>: stored on the device until the user deletes them via the app or uninstalls the application</li>
+      <li class="lang-it"><strong>Dati Firebase (account e abbonamento)</strong>: conservati per la durata dell'abbonamento attivo e per un massimo di 12 mesi dalla scadenza, necessari per la gestione di eventuali contestazioni sui pagamenti; salvo richiesta di cancellazione anticipata accettata dal titolare</li>
+      <li class="lang-en"><strong>Firebase data (account and subscription)</strong>: retained for the duration of the active subscription and for a maximum of 12 months from expiry, necessary for managing any payment disputes; unless early deletion request is accepted by the data controller</li>
+      <li class="lang-it"><strong>Dati analitici anonimi</strong>: conservati secondo le politiche di Google Analytics (massimo 26 mesi)</li>
+      <li class="lang-en"><strong>Anonymous analytical data</strong>: retained according to Google Analytics policies (maximum 26 months)</li>
+    </ul>
+  </section>
+
+  <!-- 8. TRASFERIMENTO DATI -->
+  <section>
+    <h2><span class="num">8</span>
+      <span class="lang-it">Trasferimento dei Dati</span>
+      <span class="lang-en">Data Transfer</span>
+    </h2>
+    <p class="lang-it">I dati raccolti tramite Firebase sono archiviati sui server di Google Cloud nella regione <strong>Europa (eur3)</strong>, in conformità al GDPR. Google LLC è certificata come fornitore di servizi cloud conforme al GDPR tramite le Standard Contractual Clauses (SCC). Per maggiori informazioni: <a href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy</a></p>
+    <p class="lang-en">Data collected via Firebase is stored on Google Cloud servers in the <strong>Europe (eur3)</strong> region, in compliance with GDPR. Google LLC is certified as a GDPR-compliant cloud service provider through Standard Contractual Clauses (SCC). For more information: <a href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy</a></p>
+    <p class="lang-it">I dati locali non vengono mai trasmessi automaticamente ai nostri server. L'utente Premium può esportare volontariamente i propri dati in formato JSON/CSV direttamente sul proprio dispositivo e condividerli a propria discrezione, assumendosi la piena responsabilità della destinazione di tali dati.</p>
+    <p class="lang-en">Local data is never automatically transmitted to our servers. Premium users can voluntarily export their data in JSON/CSV format directly to their device and share it at their own discretion, assuming full responsibility for the destination of such data.</p>
+  </section>
+
+  <!-- 9. TERZE PARTI -->
+  <section>
+    <h2><span class="num">9</span>
+      <span class="lang-it">Servizi di Terze Parti</span>
+      <span class="lang-en">Third-Party Services</span>
+    </h2>
+    <ul>
+      <li class="lang-it"><strong>Firebase Authentication</strong> (Google LLC): autenticazione sicura tramite account Google — solo per utenti Premium</li>
+      <li class="lang-en"><strong>Firebase Authentication</strong> (Google LLC): secure authentication via Google account — Premium users only</li>
+      <li class="lang-it"><strong>Cloud Firestore</strong> (Google LLC): archiviazione dati abbonamento — solo per utenti Premium</li>
+      <li class="lang-en"><strong>Cloud Firestore</strong> (Google LLC): subscription data storage — Premium users only</li>
+      <li class="lang-it"><strong>Google Analytics for Firebase</strong> (Google LLC): statistiche anonime e aggregate di utilizzo</li>
+      <li class="lang-en"><strong>Google Analytics for Firebase</strong> (Google LLC): anonymous and aggregated usage statistics</li>
+      <li class="lang-it"><strong>Google Play Billing</strong> (Google LLC): elaborazione pagamenti abbonamento — il pagamento avviene interamente su infrastruttura Google, PrevisFast non riceve né archivia dati di pagamento</li>
+      <li class="lang-en"><strong>Google Play Billing</strong> (Google LLC): subscription payment processing — payment occurs entirely on Google infrastructure, PrevisFast does not receive or store payment data</li>
+    </ul>
+    <p class="lang-it">Nessun dato personale viene venduto, affittato o ceduto a terze parti a fini commerciali, pubblicitari o di profilazione.</p>
+    <p class="lang-en">No personal data is sold, rented or transferred to third parties for commercial, advertising or profiling purposes.</p>
+  </section>
+
+  <!-- 10. DIRITTI UTENTE -->
+  <section>
+    <h2><span class="num">10</span>
+      <span class="lang-it">Diritti dell'Utente (GDPR)</span>
+      <span class="lang-en">User Rights (GDPR)</span>
+    </h2>
+    <p class="lang-it">Il GDPR riconosce all'utente determinati diritti, esercitabili nei limiti e alle condizioni previste dagli articoli 15-22 del Regolamento UE 2016/679. In PrevisFast esistono <strong>due categorie di dati</strong> con modalità di esercizio distinte.</p>
+    <p class="lang-en">The GDPR grants users certain rights, exercisable within the limits and conditions set out in Articles 15-22 of EU Regulation 2016/679. In PrevisFast there are <strong>two categories of data</strong> with different ways of exercising rights.</p>
+
+    <p class="lang-it"><strong>10.1 — Dati locali (gestiti direttamente dall'utente nell'app)</strong></p>
+    <p class="lang-en"><strong>10.1 — Local data (managed directly by the user in the app)</strong></p>
+    <p class="lang-it">Tutti i dati inseriti nell'app sono sotto il <strong>pieno controllo dell'utente</strong>. L'utente può in qualsiasi momento:</p>
+    <p class="lang-en">All data entered in the app is under the <strong>full control of the user</strong>. The user can at any time:</p>
+    <ul>
+      <li class="lang-it"><strong>Visualizzare e modificare</strong> i propri dati direttamente dall'app</li>
+      <li class="lang-en"><strong>View and modify</strong> their data directly from the app</li>
+      <li class="lang-it"><strong>Esportare</strong> tutti i dati in formato JSON/CSV tramite Impostazioni (versione Premium)</li>
+      <li class="lang-en"><strong>Export</strong> all data in JSON/CSV format via Settings (Premium version)</li>
+      <li class="lang-it"><strong>Importare</strong> dati da un file JSON tramite Impostazioni (versione Premium) — l'utente è l'unico responsabile del contenuto del file importato e dei dati in esso contenuti</li>
+      <li class="lang-en"><strong>Import</strong> data from a JSON file via Settings (Premium version) — the user is solely responsible for the content of the imported file and the data it contains</li>
+      <li class="lang-it"><strong>Eliminare</strong> tutti i dati tramite Impostazioni → Cancella tutti i dati (operazione irreversibile che elimina anche la chiave di cifratura)</li>
+      <li class="lang-en"><strong>Delete</strong> all data via Settings → Delete all data (irreversible operation that also deletes the encryption key)</li>
+    </ul>
+    <div class="highlight lang-it">✅ Per i dati locali non è necessario contattare il titolare: l'utente esercita i propri diritti direttamente e autonomamente dall'app.</div>
+    <div class="highlight lang-en">✅ For local data, there is no need to contact the data controller: the user exercises their rights directly and independently from the app.</div>
+
+    <p class="lang-it"><strong>10.2 — Dati Firebase (solo utenti Premium — account e abbonamento)</strong></p>
+    <p class="lang-en"><strong>10.2 — Firebase data (Premium users only — account and subscription)</strong></p>
+    <p class="lang-it">I dati Firebase non sono modificabili direttamente dall'utente tramite l'app. Per questi dati l'utente può esercitare i seguenti diritti contattando il titolare, nei limiti e alle condizioni previste dalla norma:</p>
+    <p class="lang-en">Firebase data cannot be modified directly by the user through the app. For this data the user may exercise the following rights by contacting the data controller, within the limits and conditions established by law:</p>
+    <ul>
+      <li class="lang-it"><strong>Accesso (Art. 15 GDPR)</strong>: ottenere conferma dei dati trattati su Firebase (email, UID, stato abbonamento), nei limiti in cui ciò non leda diritti di terzi</li>
+      <li class="lang-en"><strong>Access (Art. 15 GDPR)</strong>: obtain confirmation of data processed on Firebase (email, UID, subscription status), to the extent this does not affect third-party rights</li>
+      <li class="lang-it"><strong>Cancellazione (Art. 17 GDPR)</strong>: richiedere l'eliminazione dei dati Firebase esclusivamente nei casi tassativamente previsti dall'art. 17 GDPR, salvo che il trattamento sia necessario per l'adempimento di obblighi legali, per la gestione di contestazioni sui pagamenti o per la difesa in giudizio. La cancellazione comporta la disattivazione immediata e irreversibile del servizio Premium senza diritto a rimborso per il periodo residuo</li>
+      <li class="lang-en"><strong>Erasure (Art. 17 GDPR)</strong>: request deletion of Firebase data exclusively in the cases strictly provided for by Art. 17 GDPR, unless processing is necessary to comply with legal obligations, manage payment disputes or for legal claims. Deletion results in immediate and irreversible deactivation of the Premium service without right to refund for the remaining period</li>
+      <li class="lang-it"><strong>Opposizione (Art. 21 GDPR)</strong>: opporsi al trattamento basato su interesse legittimo, previa valutazione caso per caso. Il diritto di opposizione non si applica ai trattamenti necessari all'esecuzione del contratto di abbonamento</li>
+      <li class="lang-en"><strong>Objection (Art. 21 GDPR)</strong>: object to processing based on legitimate interest, subject to case-by-case assessment. The right to object does not apply to processing necessary for the performance of the subscription contract</li>
+      <li class="lang-it"><strong>Limitazione (Art. 18 GDPR)</strong>: richiedere la limitazione nei soli casi previsti dall'art. 18 GDPR, con conseguente possibile sospensione del servizio Premium</li>
+      <li class="lang-en"><strong>Restriction (Art. 18 GDPR)</strong>: request restriction only in cases provided for by Art. 18 GDPR, with possible consequent suspension of the Premium service</li>
+      <li class="lang-it"><strong>Revoca del consenso</strong>: revocare il consenso per i trattamenti basati su tale base giuridica, senza pregiudizio per la liceità del trattamento effettuato prima della revoca</li>
+      <li class="lang-en"><strong>Withdrawal of consent</strong>: withdraw consent for processing based on that legal ground, without affecting the lawfulness of processing carried out before withdrawal</li>
+    </ul>
+
+    <p class="lang-it"><strong>Come inviare una richiesta:</strong></p>
+    <p class="lang-en"><strong>How to submit a request:</strong></p>
+    <p class="lang-it">Inviare una email a <strong>privacy@previsfast.it</strong> con oggetto <em>"Esercizio diritti GDPR"</em>, indicando nome, cognome e descrizione chiara della richiesta. Il titolare si riserva di richiedere ulteriori informazioni per verificare l'identità del richiedente prima di dar seguito alla richiesta. Richieste anonime o incomplete non potranno essere evase.</p>
+    <p class="lang-en">Send an email to <strong>privacy@previsfast.it</strong> with subject <em>"GDPR Rights Exercise"</em>, indicating name, surname and a clear description of the request. The data controller reserves the right to request additional information to verify the requester's identity before processing the request. Anonymous or incomplete requests cannot be fulfilled.</p>
+    <div class="highlight lang-it">⏱️ Il titolare risponderà entro <strong>30 giorni</strong> dal ricevimento della richiesta completa e verificata. In caso di richieste particolarmente complesse o numerose, il termine potrà essere prorogato di ulteriori <strong>60 giorni</strong>, previa comunicazione motivata entro il primo mese.</div>
+    <div class="highlight lang-en">⏱️ The data controller will respond within <strong>30 days</strong> of receiving the complete and verified request. For particularly complex or numerous requests, the deadline may be extended by a further <strong>60 days</strong>, with reasoned notification within the first month.</div>
+    <p class="lang-it">Prima di presentare un reclamo formale, l'utente è invitato a contattare il titolare per tentare una risoluzione amichevole. In caso di mancata risposta soddisfacente, l'utente può presentare reclamo al <strong>Garante per la Protezione dei Dati Personali</strong> (<a href="https://www.garanteprivacy.it" target="_blank">garanteprivacy.it</a>) o all'autorità di controllo del paese in cui risiede.</p>
+    <p class="lang-en">Before filing a formal complaint, users are invited to contact the data controller to attempt amicable resolution. If no satisfactory response is received, users may lodge a complaint with the <strong>Garante per la Protezione dei Dati Personali</strong> (<a href="https://www.garanteprivacy.it" target="_blank">garanteprivacy.it</a>) or the supervisory authority of their country of residence.</p>
+  </section>
+
+  <!-- 11. SICUREZZA -->
+  <section>
+    <h2><span class="num">11</span>
+      <span class="lang-it">Sicurezza dei Dati</span>
+      <span class="lang-en">Data Security</span>
+    </h2>
+    <ul>
+      <li class="lang-it">I dati locali sono cifrati con crittografia <strong>AES-256</strong> tramite SQLCipher</li>
+      <li class="lang-en">Local data is encrypted with <strong>AES-256</strong> encryption via SQLCipher</li>
+      <li class="lang-it">La chiave di cifratura è archiviata in modo sicuro nel sistema operativo Android (EncryptedSharedPreferences)</li>
+      <li class="lang-en">The encryption key is securely stored in the Android operating system (EncryptedSharedPreferences)</li>
+      <li class="lang-it">L'accesso all'app è protetto da PIN e autenticazione biometrica</li>
+      <li class="lang-en">App access is protected by PIN and biometric authentication</li>
+      <li class="lang-it">Le comunicazioni con Firebase avvengono tramite connessioni HTTPS cifrate</li>
+      <li class="lang-en">Communications with Firebase use encrypted HTTPS connections</li>
+      <li class="lang-it">L'autenticazione avviene tramite Google Sign-In, senza archiviare password</li>
+      <li class="lang-en">Authentication uses Google Sign-In, without storing passwords</li>
+      <li class="lang-it">I dati di pagamento non transitano mai attraverso i server di PrevisFast — il pagamento è gestito interamente da Google Play</li>
+      <li class="lang-en">Payment data never passes through PrevisFast servers — payment is handled entirely by Google Play</li>
+    </ul>
+    <p class="lang-it">Nonostante le misure adottate, nessun sistema informatico è esente da rischi. L'utente è responsabile della custodia del proprio dispositivo e delle credenziali di accesso all'app (PIN, biometria). In caso di smarrimento o furto del dispositivo, si raccomanda di disinstallare l'app immediatamente per proteggere i dati.</p>
+    <p class="lang-en">Despite the measures adopted, no computer system is risk-free. The user is responsible for keeping their device and app access credentials (PIN, biometrics) secure. In case of device loss or theft, it is recommended to uninstall the app immediately to protect data.</p>
+  </section>
+
+  <!-- 12. ABBONAMENTO E RIMBORSI -->
+  <section>
+    <h2><span class="num">12</span>
+      <span class="lang-it">Abbonamento Premium e Rimborsi</span>
+      <span class="lang-en">Premium Subscription and Refunds</span>
+    </h2>
+    <p class="lang-it">Il servizio Premium è offerto tramite abbonamento annuale acquistato attraverso Google Play Store. Con riferimento ai pagamenti e ai rimborsi:</p>
+    <p class="lang-en">The Premium service is offered through an annual subscription purchased via Google Play Store. Regarding payments and refunds:</p>
+    <ul>
+      <li class="lang-it">Il pagamento è gestito interamente da Google Play secondo le <a href="https://play.google.com/about/play-terms/" target="_blank">condizioni di servizio di Google Play</a></li>
+      <li class="lang-en">Payment is managed entirely by Google Play according to <a href="https://play.google.com/about/play-terms/" target="_blank">Google Play terms of service</a></li>
+      <li class="lang-it">PrevisFast non emette rimborsi diretti. Accettando la presente informativa e avviando il servizio Premium, l'utente riconosce che il diritto di recesso non è applicabile ai contenuti digitali la cui esecuzione è iniziata con il proprio consenso (art. 59 lett. a) Codice del Consumo). Eventuali richieste di rimborso devono essere presentate esclusivamente a Google Play secondo le relative politiche, disponibili su <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">support.google.com/googleplay</a></li>
+      <li class="lang-en">PrevisFast does not issue direct refunds. By accepting this policy and activating the Premium service, the user acknowledges that the right of withdrawal does not apply to digital content whose execution has begun with their own consent (pursuant to applicable consumer law). Any refund requests must be submitted exclusively to Google Play according to its policies, available at <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">support.google.com/googleplay</a></li>
+      <li class="lang-it">PrevisFast non gestisce direttamente i pagamenti e non ha accesso ai dati della carta di credito o del metodo di pagamento dell'utente</li>
+      <li class="lang-en">PrevisFast does not directly manage payments and has no access to the user's credit card or payment method data</li>
+      <li class="lang-it">La cancellazione dell'account Firebase su richiesta dell'utente non dà diritto a rimborso per il periodo di abbonamento residuo</li>
+      <li class="lang-en">Cancellation of the Firebase account at the user's request does not entitle the user to a refund for the remaining subscription period</li>
+    </ul>
+  </section>
+
+  <!-- 13. MINORI -->
+  <section>
+    <h2><span class="num">13</span>
+      <span class="lang-it">Minori</span>
+      <span class="lang-en">Minors</span>
+    </h2>
+    <p class="lang-it">PrevisFast è un'applicazione professionale destinata esclusivamente a utenti maggiorenni (18 anni o età minima prevista dalla legge nel paese dell'utente). Non raccogliamo consapevolmente dati personali di minori. Se dovessimo venire a conoscenza di dati di minori, provvederemo alla loro immediata cancellazione. L'utilizzo dell'app da parte di minori è vietato e ricade sotto la piena responsabilità del genitore o tutore legale.</p>
+    <p class="lang-en">PrevisFast is a professional application intended exclusively for adult users (18 years of age or the minimum age required by law in the user's country). We do not knowingly collect personal data from minors. If we become aware of data from minors, we will immediately delete it. Use of the app by minors is prohibited and falls under the full responsibility of the parent or legal guardian.</p>
+  </section>
+
+  <!-- 14. CANCELLAZIONE ACCOUNT -->
+  <section>
+    <h2><span class="num">14</span>
+      <span class="lang-it">Cancellazione Account e Dati</span>
+      <span class="lang-en">Account and Data Deletion</span>
+    </h2>
+    <p class="lang-it">L'utente può eliminare tutti i propri dati locali in qualsiasi momento direttamente dall'app tramite <strong>Impostazioni → Cancella tutti i dati</strong>. Questa operazione elimina permanentemente e irreversibilmente tutti i dati locali e la chiave di cifratura.</p>
+    <p class="lang-en">Users can delete all their local data at any time directly from the app via <strong>Settings → Delete all data</strong>. This operation permanently and irreversibly deletes all local data and the encryption key.</p>
+    <p class="lang-it">Per la cancellazione dei dati Firebase (account e abbonamento), inviare una richiesta a <a href="mailto:privacy@previsfast.it">privacy@previsfast.it</a> con oggetto "Cancellazione account". La cancellazione dei dati Firebase comporta la disattivazione immediata del servizio Premium senza diritto a rimborso per il periodo residuo.</p>
+    <p class="lang-en">For deletion of Firebase data (account and subscription), send a request to <a href="mailto:privacy@previsfast.it">privacy@previsfast.it</a> with subject "Account deletion". Deletion of Firebase data results in immediate deactivation of the Premium service without right to refund for the remaining period.</p>
+  </section>
+
+  <!-- 15. LIMITAZIONE DI RESPONSABILITA -->
+  <section>
+    <h2><span class="num">15</span>
+      <span class="lang-it">Limitazione di Responsabilità</span>
+      <span class="lang-en">Limitation of Liability</span>
+    </h2>
+    <p class="lang-it">PrevisFast e il suo sviluppatore declinano qualsiasi responsabilità per i danni elencati di seguito. In nessun caso PrevisFast sarà responsabile per danni indiretti, consequenziali, perdita di profitti, perdita di dati commerciali o interruzione dell'attività, anche qualora fosse stata informata della possibilità di tali danni.</p><p class="lang-it">In particolare, declina responsabilità per:</p>
+    <p class="lang-en">PrevisFast and its developer disclaim any liability for the damages listed below. In no event shall PrevisFast be liable for indirect, consequential damages, loss of profits, loss of business data or business interruption, even if informed of the possibility of such damages.</p><p class="lang-en">In particular, liability is disclaimed for:</p>
+    <ul>
+      <li class="lang-it">La perdita di dati dovuta a malfunzionamenti, guasti o danneggiamenti del dispositivo dell'utente</li>
+      <li class="lang-en">Data loss due to malfunctions, failures or damage to the user's device</li>
+      <li class="lang-it">L'accesso non autorizzato ai dati causato da compromissione del dispositivo dell'utente (malware, accesso fisico non autorizzato, ecc.)</li>
+      <li class="lang-en">Unauthorized access to data caused by compromise of the user's device (malware, unauthorized physical access, etc.)</li>
+      <li class="lang-it">Il trattamento illecito da parte dell'utente dei dati personali dei propri clienti inseriti nell'app</li>
+      <li class="lang-en">Unlawful processing by the user of their customers' personal data entered into the app</li>
+      <li class="lang-it">I contenuti del file JSON importato dall'utente tramite la funzione di import</li>
+      <li class="lang-en">The contents of the JSON file imported by the user via the import function</li>
+      <li class="lang-it">L'utilizzo dell'app in violazione dei presenti termini o della normativa applicabile</li>
+      <li class="lang-en">Use of the app in violation of these terms or applicable law</li>
+      <li class="lang-it">Interruzioni del servizio Firebase o Google Play indipendenti dalla volontà dello sviluppatore</li>
+      <li class="lang-it">La cancellazione accidentale di dati effettuata dall'utente tramite le funzioni di eliminazione presenti nell'app, compresa la funzione "Cancella tutti i dati" — tali operazioni sono irreversibili e sotto la piena responsabilità dell'utente</li>
+      <li class="lang-en">Firebase or Google Play service interruptions beyond the developer's control</li>
+      <li class="lang-en">Accidental deletion of data by the user through the deletion functions available in the app, including the "Delete all data" function — such operations are irreversible and under the user's full responsibility</li>
+    </ul>
+  </section>
+
+  <!-- 16. MODIFICHE -->
+  <section>
+    <h2><span class="num">16</span>
+      <span class="lang-it">Modifiche alla Privacy Policy</span>
+      <span class="lang-en">Changes to the Privacy Policy</span>
+    </h2>
+    <p class="lang-it">Il titolare si riserva il diritto di modificare la presente informativa in qualsiasi momento per adeguarla a cambiamenti normativi o tecnici. Le modifiche saranno pubblicate su questa pagina con aggiornamento della data. In caso di modifiche sostanziali che incidano sui diritti degli utenti, verrà fornita notifica tramite l'applicazione con ragionevole preavviso. Il proseguimento dell'utilizzo dell'app successivamente alla pubblicazione delle modifiche costituisce accettazione della nuova informativa.</p>
+    <p class="lang-en">The data controller reserves the right to modify this policy at any time to adapt to regulatory or technical changes. Changes will be published on this page with an updated date. In case of substantial changes affecting user rights, notification will be provided through the application with reasonable notice. Continued use of the app after publication of changes constitutes acceptance of the new policy.</p>
+  </section>
+
+  <!-- 17. FORO COMPETENTE -->
+  <section>
+    <h2><span class="num">17</span>
+      <span class="lang-it">Foro Competente e Legge Applicabile</span>
+      <span class="lang-en">Jurisdiction and Applicable Law</span>
+    </h2>
+    <p class="lang-it">La presente informativa è regolata dalla legge italiana e dal Regolamento UE 2016/679 (GDPR). Per qualsiasi controversia relativa all'interpretazione, esecuzione o risoluzione della presente informativa o derivante dall'utilizzo dell'applicazione PrevisFast, sarà competente in via esclusiva il Tribunale di Agrigento, salvo diversa disposizione inderogabile di legge applicabile nel paese di residenza dell'utente consumatore.</p>
+    <p class="lang-en">This policy is governed by Italian law and EU Regulation 2016/679 (GDPR). For any dispute relating to the interpretation, execution or termination of this policy or arising from the use of the PrevisFast application, the Court of Agrigento (Italy) shall have exclusive jurisdiction, unless otherwise provided by mandatory law applicable in the consumer user's country of residence.</p>
+  </section>
+
+  <!-- CONTATTI -->
+  <div class="contact-box">
+    <h2 class="lang-it">📬 Contattaci per la Privacy</h2>
+    <h2 class="lang-en">📬 Contact Us for Privacy</h2>
+    <p class="lang-it">Per qualsiasi domanda, richiesta o reclamo relativo al trattamento dei tuoi dati personali:</p>
+    <p class="lang-en">For any questions, requests or complaints regarding the processing of your personal data:</p>
+    <br>
+    <p>📧 <a href="mailto:privacy@previsfast.it">privacy@previsfast.it</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <p class="lang-it">© 2026 PrevisFast — Tutti i diritti riservati</p>
+  <p class="lang-en">© 2026 PrevisFast — All rights reserved</p>
+  <p style="margin-top: 6px; color: #9e9e9e;">
+    <span class="lang-it">Conforme al Regolamento UE 2016/679 (GDPR)</span>
+    <span class="lang-en">Compliant with EU Regulation 2016/679 (GDPR)</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang === 'en' ? 'en' : '';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
