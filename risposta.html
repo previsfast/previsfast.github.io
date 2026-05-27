@@ -37,107 +37,72 @@
     text-align: center;
   }
 
-  .logo {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--blu);
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
-  }
-
+  .logo { font-size: 22px; font-weight: 700; color: var(--blu); margin-bottom: 8px; letter-spacing: -0.5px; }
   .logo span { color: var(--gold); }
 
-  .divider {
-    height: 2px;
-    background: linear-gradient(to right, var(--blu), var(--blu-chiaro));
-    border-radius: 2px;
-    margin: 16px 0 28px;
-  }
+  .divider { height: 2px; background: linear-gradient(to right, var(--blu), var(--blu-chiaro)); border-radius: 2px; margin: 16px 0 28px; }
 
   .icon { font-size: 64px; margin-bottom: 16px; }
 
-  h1 {
-    font-size: 20px;
-    color: var(--blu);
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
+  h1 { font-size: 20px; color: var(--blu); margin-bottom: 10px; font-weight: 700; }
 
-  p {
-    font-size: 14px;
-    color: var(--grigio);
-    line-height: 1.6;
-    margin-bottom: 12px;
-  }
+  p { font-size: 14px; color: var(--grigio); line-height: 1.6; margin-bottom: 12px; }
 
   .numero { font-weight: 700; color: var(--blu); }
 
-  .btn-group {
-    display: flex;
-    gap: 12px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-  }
+  .btn-group { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 
   button {
-    flex: 1;
-    min-width: 120px;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
+    flex: 1; min-width: 120px; padding: 14px 20px;
+    border: none; border-radius: 10px; font-size: 15px;
+    font-weight: 700; cursor: pointer;
     transition: opacity 0.2s, transform 0.1s;
   }
-
   button:active { transform: scale(0.97); }
   button:disabled { opacity: 0.5; cursor: not-allowed; }
 
   .btn-accetta { background: var(--verde); color: white; }
   .btn-rifiuta { background: var(--rosso); color: white; }
+  .btn-primary { background: var(--blu); color: white; flex: none; width: 100%; margin-top: 8px; }
+  .btn-secondary { background: #f5f5f5; color: var(--grigio); font-weight: 400; font-size: 13px; flex: none; width: 100%; }
 
-  .stato-ok {
-    background: #e8f5e9;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
-  }
-
-  .stato-errore {
-    background: #ffebee;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
-  }
+  .stato-ok { background: #e8f5e9; border-radius: 12px; padding: 20px; margin-top: 20px; }
+  .stato-errore { background: #ffebee; border-radius: 12px; padding: 20px; margin-top: 20px; }
 
   .loader {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    border: 3px solid #e0e0e0;
-    border-top-color: var(--blu);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: 20px auto;
+    display: inline-block; width: 32px; height: 32px;
+    border: 3px solid #e0e0e0; border-top-color: var(--blu);
+    border-radius: 50%; animation: spin 0.8s linear infinite; margin: 20px auto;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .footer {
-    margin-top: 28px;
-    font-size: 11px;
-    color: #bdbdbd;
+  /* Banner GDPR */
+  .gdpr-banner {
+    background: #e8eaf6;
+    border: 1px solid #c5cae9;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    text-align: left;
   }
+  .gdpr-banner h3 { font-size: 13px; color: var(--blu); margin-bottom: 8px; font-weight: 700; }
+  .gdpr-banner p { font-size: 12px; color: #424242; margin-bottom: 8px; }
+  .gdpr-banner a { color: var(--blu); font-size: 12px; }
+  .gdpr-checkbox { display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; cursor: pointer; }
+  .gdpr-checkbox input { margin-top: 2px; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; }
+  .gdpr-checkbox label { font-size: 12px; color: #424242; cursor: pointer; line-height: 1.4; }
 
+  .footer { margin-top: 28px; font-size: 11px; color: #bdbdbd; }
   .footer a { color: #bdbdbd; }
 
   #stato-caricamento { display: block; }
+  #stato-consenso { display: none; }
   #stato-scelta { display: none; }
   #stato-successo { display: none; }
   #stato-errore { display: none; }
   #stato-scaduto { display: none; }
   #stato-gia-risposto { display: none; }
+  #stato-consenso-negato { display: none; }
 
   @media (max-width: 400px) {
     .card { padding: 28px 20px; }
@@ -157,7 +122,36 @@
     <p>Verifica in corso...</p>
   </div>
 
-  <!-- SCELTA -->
+  <!-- CONSENSO GDPR -->
+  <div id="stato-consenso">
+    <div class="icon">🔒</div>
+    <h1>Informativa Privacy</h1>
+    <p>Prima di procedere, ti informiamo su come vengono trattati i tuoi dati.</p>
+
+    <div class="gdpr-banner">
+      <h3>Trattamento dati personali</h3>
+      <p>Cliccando "Accetto" o "Rifiuto" il preventivo, la tua risposta (accettazione o rifiuto) verrà registrata su server sicuri in Europa (Firebase/Google Cloud) e comunicata al professionista che ti ha inviato il preventivo.</p>
+      <p><strong>Dati trattati:</strong> risposta al preventivo, data e ora della risposta, numero preventivo.</p>
+      <p><strong>Finalità:</strong> esclusivamente per aggiornare lo stato del preventivo.</p>
+      <p><strong>Conservazione:</strong> i dati vengono conservati per il tempo necessario alla gestione del preventivo.</p>
+      <p><strong>Titolare del trattamento:</strong> il professionista che ti ha inviato il preventivo è responsabile del trattamento dei tuoi dati nell'ambito del rapporto professionale.</p>
+      <p>Per maggiori informazioni: <a href="https://previsfast.it/privacy" target="_blank">Privacy Policy completa</a></p>
+
+      <div class="gdpr-checkbox">
+        <input type="checkbox" id="gdpr-check" onchange="aggiornaBottoneConsenso()">
+        <label for="gdpr-check">Ho letto e compreso l'informativa sul trattamento dei miei dati personali e acconsento alla registrazione della mia risposta.</label>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="btn-procedi" onclick="procediDopoConsenso()" disabled>
+      Procedi
+    </button>
+    <button class="btn-secondary" onclick="mostra('stato-consenso-negato')" style="margin-top:8px; border:none; cursor:pointer;">
+      Non voglio procedere
+    </button>
+  </div>
+
+  <!-- SCELTA ACCETTA/RIFIUTA -->
   <div id="stato-scelta">
     <div class="icon">📋</div>
     <h1>Risposta al Preventivo</h1>
@@ -215,6 +209,16 @@
     </div>
   </div>
 
+  <!-- CONSENSO NEGATO -->
+  <div id="stato-consenso-negato">
+    <div class="stato-errore">
+      <div class="icon">🔒</div>
+      <h1>Nessuna risposta registrata</h1>
+      <p>Hai scelto di non fornire il consenso. Nessun dato è stato registrato.</p>
+      <p>Contatta direttamente il professionista per comunicare la tua risposta.</p>
+    </div>
+  </div>
+
   <div class="footer">
     <a href="https://previsfast.it/privacy" target="_blank">Privacy Policy</a>
     &nbsp;·&nbsp; PrevisFast © 2026
@@ -247,27 +251,37 @@
   const pid = parseInt(params.get('pid') || '0');
 
   function mostra(id) {
-    ['stato-caricamento','stato-scelta','stato-successo',
-     'stato-errore','stato-scaduto','stato-gia-risposto']
+    ['stato-caricamento','stato-consenso','stato-scelta','stato-successo',
+     'stato-errore','stato-scaduto','stato-gia-risposto','stato-consenso-negato']
       .forEach(s => document.getElementById(s).style.display = 'none');
     document.getElementById(id).style.display = 'block';
   }
 
+  window.mostra = mostra;
+
+  window.aggiornaBottoneConsenso = function() {
+    const checked = document.getElementById('gdpr-check').checked;
+    document.getElementById('btn-procedi').disabled = !checked;
+  };
+
+  window.procediDopoConsenso = function() {
+    document.getElementById('nome-azienda').textContent = decodeURIComponent(nomeAzienda);
+    document.getElementById('numero-preventivo').textContent = decodeURIComponent(numeroPreventivo);
+    mostra('stato-scelta');
+  };
+
   async function init() {
-    // Validazione token
     if (!token || token.length < 32) {
       mostra('stato-errore');
       return;
     }
 
-    // Validazione uid obbligatorio
     if (!uid || uid.length === 0) {
       mostra('stato-errore');
       return;
     }
 
     try {
-      // Verifica se esiste già una risposta
       const rispostaRef = doc(db, 'risposte_preventivo', token);
       const rispostaSnap = await getDoc(rispostaRef);
 
@@ -276,10 +290,8 @@
         return;
       }
 
-      // Mostra scelta
-      document.getElementById('nome-azienda').textContent = decodeURIComponent(nomeAzienda);
-      document.getElementById('numero-preventivo').textContent = decodeURIComponent(numeroPreventivo);
-      mostra('stato-scelta');
+      // Mostra banner consenso GDPR prima della scelta
+      mostra('stato-consenso');
 
     } catch (e) {
       console.error('Errore init:', e);
@@ -300,6 +312,8 @@
         stato: stato,
         numero_preventivo: decodeURIComponent(numeroPreventivo),
         risposto_at: serverTimestamp(),
+        consenso_gdpr: true,
+        consenso_gdpr_at: new Date().toISOString(),
       });
 
       if (stato === 'accettato') {
