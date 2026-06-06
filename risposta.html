@@ -319,12 +319,10 @@
 
       if (stato === 'accettato') {
         document.getElementById('titolo-successo').textContent = 'Preventivo accettato! 🎉';
-        document.getElementById('testo-successo').textContent = 'Hai accettato il preventivo.'; 
-        document.getElementById('testo-successo').textContent = 'Il professionista riceverà una notifica.';
+       document.getElementById('testo-successo').innerHTML = 'Hai accettato il preventivo.<br>Il professionista riceverà una notifica.';
       } else {
         document.getElementById('titolo-successo').textContent = 'Preventivo rifiutato';
-        document.getElementById('testo-successo').textContent =
-          'Hai rifiutato il preventivo. Il professionista riceverà una notifica.';
+        document.getElementById('testo-successo').innerHTML = 'Hai rifiutato il preventivo.<br>Il professionista riceverà una notifica.';
       }
       mostra('stato-successo');
 
