@@ -59,12 +59,11 @@
     transition: opacity 0.2s, transform 0.1s;
   }
   button:active { transform: scale(0.97); }
-  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
   .btn-accetta { background: var(--verde); color: white; }
   .btn-rifiuta { background: var(--rosso); color: white; }
-  .btn-primary { background: var(--blu); color: white; flex: none; width: 100%; margin-top: 8px; }
-  .btn-secondary { background: #f5f5f5; color: var(--grigio); font-weight: 400; font-size: 13px; flex: none; width: 100%; }
+  .btn-primary { background: var(--blu); color: white; flex: none; width: 100%; margin-top: 16px; padding: 16px; font-size: 16px; }
 
   .stato-ok { background: #e8f5e9; border-radius: 12px; padding: 20px; margin-top: 20px; }
   .stato-errore { background: #ffebee; border-radius: 12px; padding: 20px; margin-top: 20px; }
@@ -77,33 +76,71 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .gdpr-banner {
-    background: #e8eaf6;
+  /* Info preventivo */
+  .info-box {
+    background: #f5f7ff;
     border: 1px solid #c5cae9;
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 20px;
     text-align: left;
   }
-  .gdpr-banner h3 { font-size: 13px; color: var(--blu); margin-bottom: 8px; font-weight: 700; }
-  .gdpr-banner p { font-size: 12px; color: #424242; margin-bottom: 8px; }
-  .gdpr-banner a { color: var(--blu); font-size: 12px; }
-  .gdpr-checkbox { display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; cursor: pointer; }
-  .gdpr-checkbox input { margin-top: 2px; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; }
-  .gdpr-checkbox label { font-size: 12px; color: #424242; cursor: pointer; line-height: 1.4; }
+  .info-box .label { font-size: 11px; color: var(--grigio); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .info-box .value { font-size: 15px; font-weight: 700; color: var(--blu); margin-bottom: 12px; }
+  .info-box .value:last-child { margin-bottom: 0; }
+
+  /* Privacy */
+  .privacy-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    text-align: left;
+  }
+  .privacy-row input[type="checkbox"] {
+    width: 20px; height: 20px; flex-shrink: 0; cursor: pointer;
+    accent-color: var(--blu);
+  }
+  .privacy-row label {
+    font-size: 13px; color: #424242; line-height: 1.4; cursor: pointer;
+  }
+  .privacy-row label a {
+    color: var(--blu); text-decoration: underline; font-size: 13px;
+  }
+
+  /* Accordion privacy */
+  .privacy-accordion {
+    margin-top: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+  }
+  .privacy-accordion.open { display: block; }
+  .privacy-content {
+    padding: 14px;
+    text-align: left;
+    background: #fafafa;
+  }
+  .privacy-content p {
+    font-size: 12px;
+    color: #424242;
+    margin-bottom: 8px;
+  }
+  .privacy-content p:last-child { margin-bottom: 0; }
+  .privacy-content strong { color: #212121; }
 
   .footer { margin-top: 28px; font-size: 11px; color: #bdbdbd; }
   .footer a { color: #bdbdbd; }
 
   #stato-caricamento { display: block; }
-  #stato-consenso { display: none; }
+  #stato-principale { display: none; }
   #stato-scelta { display: none; }
   #stato-successo { display: none; }
   #stato-errore { display: none; }
   #stato-scaduto { display: none; }
   #stato-scaduto-commerciale { display: none; }
   #stato-gia-risposto { display: none; }
-  #stato-consenso-negato { display: none; }
 
   @media (max-width: 400px) {
     .card { padding: 28px 20px; }
@@ -123,43 +160,52 @@
     <p>Verifica in corso...</p>
   </div>
 
-  <!-- CONSENSO GDPR -->
-  <div id="stato-consenso">
-    <div class="icon">🔒</div>
-    <h1>Informativa Privacy</h1>
-    <p>Prima di procedere, ti informiamo su come vengono trattati i tuoi dati.</p>
+  <!-- PRINCIPALE: info + privacy + bottone rispondi -->
+  <div id="stato-principale">
+    <div class="icon">📋</div>
+    <h1>Risposta al Preventivo</h1>
+    <p>Hai ricevuto un preventivo da:</p>
 
-    <div class="gdpr-banner">
-      <h3>Trattamento dati personali</h3>
-      <p>Hai ricevuto questo link da un professionista che utilizza PrevisFast per la gestione dei propri preventivi. Cliccando "Accetto" o "Rifiuto", la tua risposta verrà registrata su server sicuri in Europa (Google Cloud/Firebase) e comunicata al professionista.</p>
-      <p><strong>Dati trattati:</strong> risposta al preventivo (accettato/rifiutato), data e ora della risposta, numero preventivo di riferimento, consenso prestato.</p>
-      <p><strong>Finalità:</strong> esclusivamente per aggiornare lo stato del preventivo nel sistema del professionista.</p>
-      <p><strong>Conservazione:</strong> i dati vengono conservati per il tempo necessario alla gestione del preventivo e per eventuali contestazioni.</p>
-      <p><strong>Titolare del trattamento:</strong> il professionista che ti ha inviato il preventivo è il titolare autonomo del trattamento dei tuoi dati nell'ambito del rapporto professionale preesistente tra voi. PrevisFast fornisce esclusivamente lo strumento tecnico e non è responsabile del trattamento effettuato dal professionista.</p>
-      <p><strong>Tuoi diritti:</strong> per esercitare i diritti GDPR (accesso, rettifica, cancellazione) rivolgiti direttamente al professionista che ti ha inviato il preventivo.</p>
-      <p>Informativa tecnica dello strumento: <a href="https://previsfast.it/privacy" target="_blank">previsfast.it/privacy</a></p>
+    <div class="info-box">
+      <div class="label">Professionista</div>
+      <div class="value" id="nome-azienda">—</div>
+      <div class="label">Preventivo n.</div>
+      <div class="value" id="numero-preventivo">—</div>
+    </div>
 
-      <div class="gdpr-checkbox">
-        <input type="checkbox" id="gdpr-check" onchange="aggiornaBottoneConsenso()">
-        <label for="gdpr-check">Ho letto e compreso l'informativa sul trattamento dei miei dati personali e acconsento alla registrazione della mia risposta.</label>
+    <!-- Checkbox privacy -->
+    <div class="privacy-row">
+      <input type="checkbox" id="privacy-check" onchange="aggiornaBottone()">
+      <label for="privacy-check">
+        Accetto il trattamento dei miei dati personali.
+        <a href="#" onclick="togglePrivacy(event)">Leggi l'informativa</a>
+      </label>
+    </div>
+
+    <!-- Accordion informativa (facoltativa) -->
+    <div class="privacy-accordion" id="privacy-accordion">
+      <div class="privacy-content">
+        <p>Cliccando "Accetto" o "Rifiuto", la tua risposta verrà registrata su server sicuri in Europa (Google Cloud/Firebase) e comunicata al professionista.</p>
+        <p><strong>Dati trattati:</strong> risposta al preventivo (accettato/rifiutato), data e ora, numero preventivo, consenso prestato.</p>
+        <p><strong>Finalità:</strong> esclusivamente per aggiornare lo stato del preventivo nel sistema del professionista.</p>
+        <p><strong>Conservazione:</strong> per il tempo necessario alla gestione del preventivo.</p>
+        <p><strong>Titolare:</strong> il professionista che ti ha inviato il preventivo. PrevisFast fornisce solo lo strumento tecnico.</p>
+        <p><strong>Tuoi diritti:</strong> rivolgiti direttamente al professionista per esercitare i diritti GDPR.</p>
+        <p>Informativa completa: <a href="https://previsfast.it/privacy" target="_blank">previsfast.it/privacy</a></p>
       </div>
     </div>
 
-    <button class="btn-primary" id="btn-procedi" onclick="procediDopoConsenso()" disabled>
-      Procedi
-    </button>
-    <button class="btn-secondary" onclick="mostra('stato-consenso-negato')" style="margin-top:8px; border:none; cursor:pointer;">
-      Non voglio procedere
+    <button class="btn-primary" id="btn-rispondi" onclick="mostraScelta()" disabled>
+      Rispondi al preventivo
     </button>
   </div>
 
   <!-- SCELTA ACCETTA/RIFIUTA -->
   <div id="stato-scelta">
     <div class="icon">📋</div>
-    <h1>Risposta al Preventivo</h1>
-    <p>Hai ricevuto un preventivo da <strong id="nome-azienda">—</strong>.</p>
-    <p>Preventivo n. <span class="numero" id="numero-preventivo">—</span></p>
-    <p>Clicca per confermare la tua risposta:</p>
+    <h1>Conferma la tua risposta</h1>
+    <p>Preventivo di <strong id="nome-azienda-scelta">—</strong></p>
+    <p>N. <span class="numero" id="numero-preventivo-scelta">—</span></p>
     <div class="btn-group">
       <button class="btn-accetta" onclick="rispondi('accettato')">Accetto</button>
       <button class="btn-rifiuta" onclick="rispondi('rifiutato')">Rifiuto</button>
@@ -222,16 +268,6 @@
     </div>
   </div>
 
-  <!-- CONSENSO NEGATO -->
-  <div id="stato-consenso-negato">
-    <div class="stato-errore">
-      <div class="icon">🔒</div>
-      <h1>Nessuna risposta registrata</h1>
-      <p>Hai scelto di non fornire il consenso. Nessun dato è stato registrato.</p>
-      <p>Contatta direttamente il professionista per comunicare la tua risposta.</p>
-    </div>
-  </div>
-
   <div class="footer">
     <a href="https://previsfast.it/privacy" target="_blank">Privacy Policy</a>
     &nbsp;·&nbsp; PrevisFast © 2026
@@ -258,30 +294,35 @@
 
   const params = new URLSearchParams(window.location.search);
   const token = params.get('token');
-  const nomeAzienda = params.get('azienda') || 'il professionista';
-  const numeroPreventivo = params.get('numero') || '—';
+  const nomeAzienda = decodeURIComponent(params.get('azienda') || 'il professionista');
+  const numeroPreventivo = decodeURIComponent(params.get('numero') || '—');
   const uid = params.get('uid') || '';
   const pid = parseInt(params.get('pid') || '0');
-  const scadenzaParam = params.get('scadenza'); // formato YYYY-MM-DD
+  const scadenzaParam = params.get('scadenza');
 
   function mostra(id) {
-    ['stato-caricamento','stato-consenso','stato-scelta','stato-successo',
-     'stato-errore','stato-scaduto','stato-scaduto-commerciale',
-     'stato-gia-risposto','stato-consenso-negato']
+    ['stato-caricamento','stato-principale','stato-scelta','stato-successo',
+     'stato-errore','stato-scaduto','stato-scaduto-commerciale','stato-gia-risposto']
       .forEach(s => document.getElementById(s).style.display = 'none');
     document.getElementById(id).style.display = 'block';
   }
 
   window.mostra = mostra;
 
-  window.aggiornaBottoneConsenso = function() {
-    const checked = document.getElementById('gdpr-check').checked;
-    document.getElementById('btn-procedi').disabled = !checked;
+  window.aggiornaBottone = function() {
+    const checked = document.getElementById('privacy-check').checked;
+    document.getElementById('btn-rispondi').disabled = !checked;
   };
 
-  window.procediDopoConsenso = function() {
-    document.getElementById('nome-azienda').textContent = decodeURIComponent(nomeAzienda);
-    document.getElementById('numero-preventivo').textContent = decodeURIComponent(numeroPreventivo);
+  window.togglePrivacy = function(e) {
+    e.preventDefault();
+    const acc = document.getElementById('privacy-accordion');
+    acc.classList.toggle('open');
+  };
+
+  window.mostraScelta = function() {
+    document.getElementById('nome-azienda-scelta').textContent = nomeAzienda;
+    document.getElementById('numero-preventivo-scelta').textContent = numeroPreventivo;
     mostra('stato-scelta');
   };
 
@@ -291,50 +332,10 @@
   }
 
   async function init() {
-    if (!token || token.length < 32) {
-      mostra('stato-errore');
-      return;
-    }
+    if (!token || token.length < 32) { mostra('stato-errore'); return; }
+    if (!uid || uid.length === 0) { mostra('stato-errore'); return; }
 
-    if (!uid || uid.length === 0) {
-      mostra('stato-errore');
-      return;
-    }
-
-    // Controlla scadenza commerciale del preventivo
-    if (scadenzaParam) {
-      const dataScadenza = new Date(scadenzaParam);
-      dataScadenza.setHours(23, 59, 59, 999); // fine giornata
-      if (new Date() > dataScadenza) {
-        document.getElementById('data-scadenza-commerciale').textContent =
-          formatDataItaliana(scadenzaParam);
-        mostra('stato-scaduto-commerciale');
-        return;
-      }
-    }
-
-    try {
-      const rispostaRef = doc(db, 'risposte_preventivo', token);
-      const rispostaSnap = await getDoc(rispostaRef);
-
-      if (rispostaSnap.exists()) {
-        mostra('stato-gia-risposto');
-        return;
-      }
-
-      mostra('stato-consenso');
-
-    } catch (e) {
-      console.error('Errore init:', e);
-      mostra('stato-errore');
-    }
-  }
-
-  window.rispondi = async function(stato) {
-    const btns = document.querySelectorAll('button');
-    btns.forEach(b => b.disabled = true);
-
-    // Doppio controllo scadenza commerciale al momento della risposta
+    // Controlla scadenza commerciale
     if (scadenzaParam) {
       const dataScadenza = new Date(scadenzaParam);
       dataScadenza.setHours(23, 59, 59, 999);
@@ -348,12 +349,43 @@
 
     try {
       const rispostaRef = doc(db, 'risposte_preventivo', token);
+      const rispostaSnap = await getDoc(rispostaRef);
+      if (rispostaSnap.exists()) { mostra('stato-gia-risposto'); return; }
 
+      // Popola info e mostra pagina principale
+      document.getElementById('nome-azienda').textContent = nomeAzienda;
+      document.getElementById('numero-preventivo').textContent = numeroPreventivo;
+      mostra('stato-principale');
+
+    } catch (e) {
+      console.error('Errore init:', e);
+      mostra('stato-errore');
+    }
+  }
+
+  window.rispondi = async function(stato) {
+    const btns = document.querySelectorAll('button');
+    btns.forEach(b => b.disabled = true);
+
+    // Doppio controllo scadenza commerciale
+    if (scadenzaParam) {
+      const dataScadenza = new Date(scadenzaParam);
+      dataScadenza.setHours(23, 59, 59, 999);
+      if (new Date() > dataScadenza) {
+        document.getElementById('data-scadenza-commerciale').textContent =
+          formatDataItaliana(scadenzaParam);
+        mostra('stato-scaduto-commerciale');
+        return;
+      }
+    }
+
+    try {
+      const rispostaRef = doc(db, 'risposte_preventivo', token);
       await setDoc(rispostaRef, {
         preventivo_id: pid,
         user_uid: uid,
         stato: stato,
-        numero_preventivo: decodeURIComponent(numeroPreventivo),
+        numero_preventivo: numeroPreventivo,
         risposto_at: serverTimestamp(),
         consenso_gdpr: true,
         consenso_gdpr_at: new Date().toISOString(),
