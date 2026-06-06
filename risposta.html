@@ -63,7 +63,31 @@
 
   .btn-accetta { background: var(--verde); color: white; }
   .btn-rifiuta { background: var(--rosso); color: white; }
-  .btn-primary { background: var(--blu); color: white; flex: none; width: 100%; margin-top: 16px; padding: 16px; font-size: 16px; }
+
+  /* Bottone principale verde Rispondi */
+  .btn-rispondi {
+    width: 100%;
+    padding: 18px;
+    margin-top: 20px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    flex: none;
+  }
+  .btn-rispondi:active { transform: scale(0.97); }
+  .btn-rispondi:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-rispondi:not(:disabled) {
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4);
+  }
 
   .stato-ok { background: #e8f5e9; border-radius: 12px; padding: 20px; margin-top: 20px; }
   .stato-errore { background: #ffebee; border-radius: 12px; padding: 20px; margin-top: 20px; }
@@ -82,7 +106,7 @@
     border: 1px solid #c5cae9;
     border-radius: 12px;
     padding: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 4px;
     text-align: left;
   }
   .info-box .label { font-size: 11px; color: var(--grigio); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
@@ -94,12 +118,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 16px;
     text-align: left;
   }
   .privacy-row input[type="checkbox"] {
     width: 20px; height: 20px; flex-shrink: 0; cursor: pointer;
-    accent-color: var(--blu);
+    accent-color: var(--verde);
   }
   .privacy-row label {
     font-size: 13px; color: #424242; line-height: 1.4; cursor: pointer;
@@ -110,7 +134,7 @@
 
   /* Accordion privacy */
   .privacy-accordion {
-    margin-top: 12px;
+    margin-top: 10px;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     overflow: hidden;
@@ -129,6 +153,7 @@
   }
   .privacy-content p:last-child { margin-bottom: 0; }
   .privacy-content strong { color: #212121; }
+  .privacy-content a { color: var(--blu); }
 
   .footer { margin-top: 28px; font-size: 11px; color: #bdbdbd; }
   .footer a { color: #bdbdbd; }
@@ -160,7 +185,7 @@
     <p>Verifica in corso...</p>
   </div>
 
-  <!-- PRINCIPALE: info + privacy + bottone rispondi -->
+  <!-- PRINCIPALE: info + bottone + privacy -->
   <div id="stato-principale">
     <div class="icon">📋</div>
     <h1>Risposta al Preventivo</h1>
@@ -173,7 +198,12 @@
       <div class="value" id="numero-preventivo">—</div>
     </div>
 
-    <!-- Checkbox privacy -->
+    <!-- Bottone verde disabilitato -->
+    <button class="btn-rispondi" id="btn-rispondi" onclick="mostraScelta()" disabled>
+      Rispondi al preventivo
+    </button>
+
+    <!-- Checkbox privacy SOTTO il bottone -->
     <div class="privacy-row">
       <input type="checkbox" id="privacy-check" onchange="aggiornaBottone()">
       <label for="privacy-check">
@@ -194,10 +224,6 @@
         <p>Informativa completa: <a href="https://previsfast.it/privacy" target="_blank">previsfast.it/privacy</a></p>
       </div>
     </div>
-
-    <button class="btn-primary" id="btn-rispondi" onclick="mostraScelta()" disabled>
-      Rispondi al preventivo
-    </button>
   </div>
 
   <!-- SCELTA ACCETTA/RIFIUTA -->
@@ -352,7 +378,6 @@
       const rispostaSnap = await getDoc(rispostaRef);
       if (rispostaSnap.exists()) { mostra('stato-gia-risposto'); return; }
 
-      // Popola info e mostra pagina principale
       document.getElementById('nome-azienda').textContent = nomeAzienda;
       document.getElementById('numero-preventivo').textContent = numeroPreventivo;
       mostra('stato-principale');
