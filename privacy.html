@@ -63,8 +63,8 @@
 <div class="container">
 
   <div class="update-box">
-    <span class="lang-it">📅 Ultimo aggiornamento: 27 maggio 2026</span>
-    <span class="lang-en">📅 Last updated: May 27, 2026</span>
+    <span class="lang-it">📅 Ultimo aggiornamento: 7 giugno 2026</span>
+    <span class="lang-en">📅 Last updated: June 7, 2026</span>
   </div>
 
   <!-- 1. INTRODUZIONE -->
@@ -98,11 +98,11 @@
     <ul>
       <li class="lang-it">L'utente è il titolare autonomo del trattamento di tali dati ai sensi dell'art. 4 n. 7 GDPR, in quanto è lui a determinare le finalità e i mezzi del trattamento</li>
       <li class="lang-en">The user is the autonomous data controller of such data pursuant to Art. 4(7) GDPR, as they determine the purposes and means of processing</li>
-      <li class="lang-it">Lo sviluppatore dell'app non accede mai ai dati dei clienti dell'utente, che rimangono cifrati sul dispositivo dell'utente</li>
-      <li class="lang-en">The app developer never accesses the user's customer data, which remains encrypted on the user's device</li>
+      <li class="lang-it">Lo sviluppatore dell'app non accede mai ai dati dei clienti dell'utente, che rimangono archiviati localmente sul dispositivo dell'utente e protetti dalla cifratura del sistema operativo Android</li>
+      <li class="lang-en">The app developer never accesses the user's customer data, which remains stored locally on the user's device and protected by Android operating system encryption</li>
       <li class="lang-it">L'utente è responsabile di aver ottenuto le necessarie basi giuridiche (es. consenso, contratto) per trattare i dati personali dei propri clienti nell'app</li>
       <li class="lang-en">The user is responsible for having obtained the necessary legal bases (e.g. consent, contract) to process their customers' personal data in the app</li>
-      <li class="lang-it">L'utente è responsible della sicurezza fisica del proprio dispositivo e dell'accesso all'applicazione</li>
+      <li class="lang-it">L'utente è responsabile della sicurezza fisica del proprio dispositivo e dell'accesso all'applicazione</li>
       <li class="lang-en">The user is responsible for the physical security of their device and access to the application</li>
     </ul>
     <div class="warning lang-it">
@@ -284,8 +284,8 @@
       <li class="lang-en"><strong>Export</strong> all data in JSON/CSV format via Settings (Premium version)</li>
       <li class="lang-it"><strong>Importare</strong> dati da un file JSON tramite Impostazioni (versione Premium) — l'utente è l'unico responsabile del contenuto del file importato e dei dati in esso contenuti</li>
       <li class="lang-en"><strong>Import</strong> data from a JSON file via Settings (Premium version) — the user is solely responsible for the content of the imported file and the data it contains</li>
-      <li class="lang-it"><strong>Eliminare</strong> tutti i dati tramite Impostazioni → Cancella tutti i dati (operazione irreversibile che elimina anche la chiave di cifratura)</li>
-      <li class="lang-en"><strong>Delete</strong> all data via Settings → Delete all data (irreversible operation that also deletes the encryption key)</li>
+      <li class="lang-it"><strong>Eliminare</strong> tutti i dati tramite Impostazioni → Cancella tutti i dati (operazione irreversibile)</li>
+      <li class="lang-en"><strong>Delete</strong> all data via Settings → Delete all data (irreversible operation)</li>
     </ul>
     <div class="highlight lang-it">✅ Per i dati locali non è necessario contattare il titolare: l'utente esercita i propri diritti direttamente e autonomamente dall'app.</div>
     <div class="highlight lang-en">✅ For local data, there is no need to contact the data controller: the user exercises their rights directly and independently from the app.</div>
@@ -333,10 +333,8 @@
       <span class="lang-en">Data Security</span>
     </h2>
     <ul>
-      <li class="lang-it">I dati locali sono cifrati con crittografia <strong>AES-256</strong> tramite SQLCipher</li>
-      <li class="lang-en">Local data is encrypted with <strong>AES-256</strong> encryption via SQLCipher</li>
-      <li class="lang-it">La chiave di cifratura è archiviata in modo sicuro nel sistema operativo Android (EncryptedSharedPreferences)</li>
-      <li class="lang-en">The encryption key is securely stored in the Android operating system (EncryptedSharedPreferences)</li>
+      <li class="lang-it">I dati locali sono archiviati sul dispositivo dell'utente e protetti dalla cifratura <strong>AES-256</strong> gestita dal sistema operativo Android (File Based Encryption), attiva su tutti i dispositivi Android moderni</li>
+      <li class="lang-en">Local data is stored on the user's device and protected by <strong>AES-256</strong> encryption managed by the Android operating system (File Based Encryption), active on all modern Android devices</li>
       <li class="lang-it">L'accesso all'app è protetto da PIN e autenticazione biometrica</li>
       <li class="lang-en">App access is protected by PIN and biometric authentication</li>
       <li class="lang-it">Le comunicazioni con Firebase avvengono tramite connessioni HTTPS cifrate</li>
@@ -386,8 +384,8 @@
       <span class="lang-it">Cancellazione Account e Dati</span>
       <span class="lang-en">Account and Data Deletion</span>
     </h2>
-    <p class="lang-it">L'utente può eliminare tutti i propri dati locali in qualsiasi momento direttamente dall'app tramite <strong>Impostazioni → Cancella tutti i dati</strong>. Questa operazione elimina permanentemente e irreversibilmente tutti i dati locali e la chiave di cifratura.</p>
-    <p class="lang-en">Users can delete all their local data at any time directly from the app via <strong>Settings → Delete all data</strong>. This operation permanently and irreversibly deletes all local data and the encryption key.</p>
+    <p class="lang-it">L'utente può eliminare tutti i propri dati locali in qualsiasi momento direttamente dall'app tramite <strong>Impostazioni → Cancella tutti i dati</strong>. Questa operazione elimina permanentemente e irreversibilmente tutti i dati locali.</p>
+    <p class="lang-en">Users can delete all their local data at any time directly from the app via <strong>Settings → Delete all data</strong>. This operation permanently and irreversibly deletes all local data.</p>
     <p class="lang-it">Per la cancellazione dei dati Firebase (account e abbonamento), inviare una richiesta a <a href="mailto:privacy@previsfast.it">privacy@previsfast.it</a> con oggetto "Cancellazione account". La cancellazione dei dati Firebase comporta la disattivazione immediata del servizio Premium senza diritto a rimborso per il periodo residuo.</p>
     <p class="lang-en">For deletion of Firebase data (account and subscription), send a request to <a href="mailto:privacy@previsfast.it">privacy@previsfast.it</a> with subject "Account deletion". Deletion of Firebase data results in immediate deactivation of the Premium service without right to refund for the remaining period.</p>
   </section>
@@ -398,8 +396,10 @@
       <span class="lang-it">Limitazione di Responsabilità</span>
       <span class="lang-en">Limitation of Liability</span>
     </h2>
-    <p class="lang-it">PrevisFast e il suo sviluppatore declinano qualsiasi responsabilità per i danni elencati di seguito. In nessun caso PrevisFast sarà responsabile per danni indiretti, consequenziali, perdita di profitti, perdita di dati commerciali o interruzione dell'attività, anche qualora fosse stata informata della possibilità di tali danni.</p><p class="lang-it">In particolare, declina responsabilità per:</p>
-    <p class="lang-en">PrevisFast and its developer disclaim any liability for the damages listed below. In no event shall PrevisFast be liable for indirect, consequential damages, loss of profits, loss of business data or business interruption, even if informed of the possibility of such damages.</p><p class="lang-en">In particular, liability is disclaimed for:</p>
+    <p class="lang-it">PrevisFast e il suo sviluppatore declinano qualsiasi responsabilità per i danni elencati di seguito. In nessun caso PrevisFast sarà responsabile per danni indiretti, consequenziali, perdita di profitti, perdita di dati commerciali o interruzione dell'attività, anche qualora fosse stata informata della possibilità di tali danni.</p>
+    <p class="lang-it">In particolare, declina responsabilità per:</p>
+    <p class="lang-en">PrevisFast and its developer disclaim any liability for the damages listed below. In no event shall PrevisFast be liable for indirect, consequential damages, loss of profits, loss of business data or business interruption, even if informed of the possibility of such damages.</p>
+    <p class="lang-en">In particular, liability is disclaimed for:</p>
     <ul>
       <li class="lang-it">La perdita di dati dovuta a malfunzionamenti, guasti o danneggiamenti del dispositivo dell'utente</li>
       <li class="lang-en">Data loss due to malfunctions, failures or damage to the user's device</li>
@@ -416,8 +416,8 @@
       <li class="lang-it">Qualsiasi danno subito dal cliente finale del professionista in conseguenza dell'utilizzo della funzione di risposta al preventivo — il professionista è il solo ed esclusivo responsabile nei confronti del proprio cliente finale</li>
       <li class="lang-en">Any damage suffered by the professional's end customer as a result of using the quote response feature — the professional is the sole and exclusive party responsible towards their end customer</li>
       <li class="lang-it">Interruzioni del servizio Firebase o Google Play indipendenti dalla volontà dello sviluppatore</li>
-      <li class="lang-it">La cancellazione accidentale di dati effettuata dall'utente tramite le funzioni di eliminazione presenti nell'app, compresa la funzione "Cancella tutti i dati" — tali operazioni sono irreversibili e sotto la piena responsabilità dell'utente</li>
       <li class="lang-en">Firebase or Google Play service interruptions beyond the developer's control</li>
+      <li class="lang-it">La cancellazione accidentale di dati effettuata dall'utente tramite le funzioni di eliminazione presenti nell'app, compresa la funzione "Cancella tutti i dati" — tali operazioni sono irreversibili e sotto la piena responsabilità dell'utente</li>
       <li class="lang-en">Accidental deletion of data by the user through the deletion functions available in the app, including the "Delete all data" function — such operations are irreversible and under the user's full responsibility</li>
     </ul>
   </section>
