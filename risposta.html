@@ -64,7 +64,6 @@
   .btn-accetta { background: var(--verde); color: white; }
   .btn-rifiuta { background: var(--rosso); color: white; }
 
-  /* Bottone principale verde Rispondi */
   .btn-rispondi {
     width: 100%;
     padding: 18px;
@@ -80,14 +79,8 @@
     flex: none;
   }
   .btn-rispondi:active { transform: scale(0.97); }
-  .btn-rispondi:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    transform: none;
-  }
-  .btn-rispondi:not(:disabled) {
-    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4);
-  }
+  .btn-rispondi:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .btn-rispondi:not(:disabled) { box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4); }
 
   .stato-ok { background: #e8f5e9; border-radius: 12px; padding: 20px; margin-top: 20px; }
   .stato-errore { background: #ffebee; border-radius: 12px; padding: 20px; margin-top: 20px; }
@@ -100,7 +93,6 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Info preventivo */
   .info-box {
     background: #f5f7ff;
     border: 1px solid #c5cae9;
@@ -113,7 +105,6 @@
   .info-box .value { font-size: 15px; font-weight: 700; color: var(--blu); margin-bottom: 12px; }
   .info-box .value:last-child { margin-bottom: 0; }
 
-  /* Privacy */
   .privacy-row {
     display: flex;
     align-items: center;
@@ -125,14 +116,9 @@
     width: 20px; height: 20px; flex-shrink: 0; cursor: pointer;
     accent-color: var(--verde);
   }
-  .privacy-row label {
-    font-size: 13px; color: #424242; line-height: 1.4; cursor: pointer;
-  }
-  .privacy-row label a {
-    color: var(--blu); text-decoration: underline; font-size: 13px;
-  }
+  .privacy-row label { font-size: 13px; color: #424242; line-height: 1.4; cursor: pointer; }
+  .privacy-row label a { color: var(--blu); text-decoration: underline; font-size: 13px; }
 
-  /* Accordion privacy */
   .privacy-accordion {
     margin-top: 10px;
     border: 1px solid #e0e0e0;
@@ -141,16 +127,8 @@
     display: none;
   }
   .privacy-accordion.open { display: block; }
-  .privacy-content {
-    padding: 14px;
-    text-align: left;
-    background: #fafafa;
-  }
-  .privacy-content p {
-    font-size: 12px;
-    color: #424242;
-    margin-bottom: 8px;
-  }
+  .privacy-content { padding: 14px; text-align: left; background: #fafafa; }
+  .privacy-content p { font-size: 12px; color: #424242; margin-bottom: 8px; }
   .privacy-content p:last-child { margin-bottom: 0; }
   .privacy-content strong { color: #212121; }
   .privacy-content a { color: var(--blu); }
@@ -163,6 +141,7 @@
   #stato-scelta { display: none; }
   #stato-successo { display: none; }
   #stato-errore { display: none; }
+  #stato-invalidato { display: none; }
   #stato-scaduto { display: none; }
   #stato-scaduto-commerciale { display: none; }
   #stato-gia-risposto { display: none; }
@@ -185,25 +164,20 @@
     <p>Verifica in corso...</p>
   </div>
 
-  <!-- PRINCIPALE: info + bottone + privacy -->
+  <!-- PRINCIPALE -->
   <div id="stato-principale">
     <div class="icon">📋</div>
     <h1>Risposta al Preventivo</h1>
     <p>Hai ricevuto un preventivo da:</p>
-
     <div class="info-box">
       <div class="label">Professionista</div>
       <div class="value" id="nome-azienda">—</div>
       <div class="label">Preventivo n.</div>
       <div class="value" id="numero-preventivo">—</div>
     </div>
-
-    <!-- Bottone verde disabilitato -->
     <button class="btn-rispondi" id="btn-rispondi" onclick="mostraScelta()" disabled>
       Rispondi al preventivo
     </button>
-
-    <!-- Checkbox privacy SOTTO il bottone -->
     <div class="privacy-row">
       <input type="checkbox" id="privacy-check" onchange="aggiornaBottone()">
       <label for="privacy-check">
@@ -211,8 +185,6 @@
         <a href="#" onclick="togglePrivacy(event)">Leggi l'informativa</a>
       </label>
     </div>
-
-    <!-- Accordion informativa (facoltativa) -->
     <div class="privacy-accordion" id="privacy-accordion">
       <div class="privacy-content">
         <p>Cliccando "Accetto" o "Rifiuto", la tua risposta verrà registrata su server sicuri in Europa (Google Cloud/Firebase) e comunicata al professionista.</p>
@@ -253,16 +225,26 @@
     </p>
   </div>
 
-  <!-- ERRORE -->
-<div id="stato-errore">
-  <div class="stato-errore">
-    <div class="icon">⚠️</div>
-    <h1>Link non più valido</h1>
-    <p>Questo link non è più attivo.</p>
-    <p>Il preventivo potrebbe essere stato modificato o annullato dal professionista.</p>
-    <p>Contatta direttamente il professionista per ricevere un preventivo aggiornato.</p>
+  <!-- ERRORE GENERICO -->
+  <div id="stato-errore">
+    <div class="stato-errore">
+      <div class="icon">⚠️</div>
+      <h1>Link non valido</h1>
+      <p>Questo link non è valido o si è verificato un errore.</p>
+      <p>Contatta direttamente il professionista.</p>
+    </div>
   </div>
-</div>
+
+  <!-- PREVENTIVO MODIFICATO O ANNULLATO -->
+  <div id="stato-invalidato">
+    <div class="stato-errore">
+      <div class="icon">🚫</div>
+      <h1>Preventivo annullato</h1>
+      <p>Questo preventivo è stato modificato o annullato dal professionista.</p>
+      <p>Il link non è più attivo.</p>
+      <p>Contatta direttamente il professionista per ricevere un preventivo aggiornato.</p>
+    </div>
+  </div>
 
   <!-- SCADUTO (token 30gg) -->
   <div id="stato-scaduto">
@@ -329,7 +311,8 @@
 
   function mostra(id) {
     ['stato-caricamento','stato-principale','stato-scelta','stato-successo',
-     'stato-errore','stato-scaduto','stato-scaduto-commerciale','stato-gia-risposto']
+     'stato-errore','stato-invalidato','stato-scaduto',
+     'stato-scaduto-commerciale','stato-gia-risposto']
       .forEach(s => document.getElementById(s).style.display = 'none');
     document.getElementById(id).style.display = 'block';
   }
@@ -377,7 +360,18 @@
     try {
       const rispostaRef = doc(db, 'risposte_preventivo', token);
       const rispostaSnap = await getDoc(rispostaRef);
-      if (rispostaSnap.exists()) { mostra('stato-gia-risposto'); return; }
+
+      if (rispostaSnap.exists()) {
+        const data = rispostaSnap.data();
+        // Token invalidato dall'app (preventivo modificato o eliminato)
+        if (data.invalidato === true) {
+          mostra('stato-invalidato');
+          return;
+        }
+        // Risposta già data dal cliente
+        mostra('stato-gia-risposto');
+        return;
+      }
 
       document.getElementById('nome-azienda').textContent = nomeAzienda;
       document.getElementById('numero-preventivo').textContent = numeroPreventivo;
@@ -407,6 +401,14 @@
 
     try {
       const rispostaRef = doc(db, 'risposte_preventivo', token);
+
+      // Doppio controllo invalidazione prima di scrivere
+      const snapCheck = await getDoc(rispostaRef);
+      if (snapCheck.exists() && snapCheck.data().invalidato === true) {
+        mostra('stato-invalidato');
+        return;
+      }
+
       await setDoc(rispostaRef, {
         preventivo_id: pid,
         user_uid: uid,
