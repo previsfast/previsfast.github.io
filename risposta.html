@@ -161,54 +161,46 @@
   <!-- CARICAMENTO -->
   <div id="stato-caricamento">
     <div class="loader"></div>
-    <p>Verifica in corso...</p>
+    <p id="txt-verifica">Verifica in corso...</p>
   </div>
 
   <!-- PRINCIPALE -->
   <div id="stato-principale">
     <div class="icon">📋</div>
-    <h1>Risposta al Preventivo</h1>
-    <p>Hai ricevuto un preventivo da:</p>
+    <h1 id="txt-titolo-principale">Risposta al Preventivo</h1>
+    <p id="txt-ricevuto-da">Hai ricevuto un preventivo da:</p>
     <div class="info-box">
-      <div class="label">Professionista</div>
+      <div class="label" id="txt-label-professionista">Professionista</div>
       <div class="value" id="nome-azienda">—</div>
-      <div class="label">Preventivo n.</div>
+      <div class="label" id="txt-label-preventivo">Preventivo n.</div>
       <div class="value" id="numero-preventivo">—</div>
     </div>
     <button class="btn-rispondi" id="btn-rispondi" onclick="mostraScelta()" disabled>
-      Rispondi al preventivo
+      <span id="txt-btn-rispondi">Rispondi al preventivo</span>
     </button>
     <div class="privacy-row">
       <input type="checkbox" id="privacy-check" onchange="aggiornaBottone()">
       <label for="privacy-check">
-        Accetto il trattamento dei miei dati personali.
-        <a href="#" onclick="togglePrivacy(event)">Leggi l'informativa</a>
+        <span id="txt-privacy-accetto">Accetto il trattamento dei miei dati personali.</span>
+        <a href="#" onclick="togglePrivacy(event)" id="txt-privacy-leggi">Leggi l'informativa</a>
       </label>
     </div>
     <div class="privacy-accordion" id="privacy-accordion">
-      <div class="privacy-content">
-        <p>Cliccando "Accetto" o "Rifiuto", la tua risposta verrà registrata su server sicuri in Europa (Google Cloud/Firebase) e comunicata al professionista.</p>
-        <p><strong>Dati trattati:</strong> risposta al preventivo (accettato/rifiutato), data e ora, numero preventivo, consenso prestato.</p>
-        <p><strong>Finalità:</strong> esclusivamente per aggiornare lo stato del preventivo nel sistema del professionista.</p>
-        <p><strong>Conservazione:</strong> per il tempo necessario alla gestione del preventivo.</p>
-        <p><strong>Titolare:</strong> il professionista che ti ha inviato il preventivo. PrevisFast fornisce solo lo strumento tecnico.</p>
-        <p><strong>Tuoi diritti:</strong> rivolgiti direttamente al professionista per esercitare i diritti GDPR.</p>
-        <p>Informativa completa: <a href="https://previsfast.it/privacy" target="_blank">previsfast.it/privacy</a></p>
-      </div>
+      <div class="privacy-content" id="privacy-content-text"></div>
     </div>
   </div>
 
   <!-- SCELTA ACCETTA/RIFIUTA -->
   <div id="stato-scelta">
     <div class="icon">📋</div>
-    <h1>Conferma la tua risposta</h1>
-    <p>Preventivo di <strong id="nome-azienda-scelta">—</strong></p>
+    <h1 id="txt-conferma-titolo">Conferma la tua risposta</h1>
+    <p id="txt-preventivo-di">Preventivo di <strong id="nome-azienda-scelta">—</strong></p>
     <p>N. <span class="numero" id="numero-preventivo-scelta">—</span></p>
     <div class="btn-group">
-      <button class="btn-accetta" onclick="rispondi('accettato')">Accetto</button>
-      <button class="btn-rifiuta" onclick="rispondi('rifiutato')">Rifiuto</button>
+      <button class="btn-accetta" id="txt-btn-accetta" onclick="rispondi('accettato')">Accetto</button>
+      <button class="btn-rifiuta" id="txt-btn-rifiuta" onclick="rispondi('rifiutato')">Rifiuto</button>
     </div>
-    <p style="margin-top:16px; font-size:12px; color:#9e9e9e;">
+    <p style="margin-top:16px; font-size:12px; color:#9e9e9e;" id="txt-risposta-nota">
       La tua risposta verrà registrata e il professionista riceverà una notifica.
     </p>
   </div>
@@ -220,7 +212,7 @@
       <h1 id="titolo-successo">Risposta registrata</h1>
       <p id="testo-successo">La tua risposta è stata registrata con successo.</p>
     </div>
-    <p style="margin-top:16px; font-size:12px; color:#9e9e9e;">
+    <p style="margin-top:16px; font-size:12px; color:#9e9e9e;" id="txt-professionista-notificato">
       Il professionista è stato notificato. Puoi chiudere questa pagina.
     </p>
   </div>
@@ -229,9 +221,9 @@
   <div id="stato-errore">
     <div class="stato-errore">
       <div class="icon">⚠️</div>
-      <h1>Link non valido</h1>
-      <p>Questo link non è valido o si è verificato un errore.</p>
-      <p>Contatta direttamente il professionista.</p>
+      <h1 id="txt-link-non-valido">Link non valido</h1>
+      <p id="txt-link-non-valido-sub">Questo link non è valido o si è verificato un errore.</p>
+      <p id="txt-contatta">Contatta direttamente il professionista.</p>
     </div>
   </div>
 
@@ -239,10 +231,10 @@
   <div id="stato-invalidato">
     <div class="stato-errore">
       <div class="icon">🚫</div>
-      <h1>Preventivo annullato</h1>
-      <p>Questo preventivo è stato modificato o annullato dal professionista.</p>
-      <p>Il link non è più attivo.</p>
-      <p>Contatta direttamente il professionista per ricevere un preventivo aggiornato.</p>
+      <h1 id="txt-annullato-titolo">Preventivo annullato</h1>
+      <p id="txt-annullato-sub1">Questo preventivo è stato modificato o annullato dal professionista.</p>
+      <p id="txt-annullato-sub2">Il link non è più attivo.</p>
+      <p id="txt-annullato-sub3">Contatta direttamente il professionista per ricevere un preventivo aggiornato.</p>
     </div>
   </div>
 
@@ -250,9 +242,9 @@
   <div id="stato-scaduto">
     <div class="stato-errore">
       <div class="icon">⏰</div>
-      <h1>Link scaduto</h1>
-      <p>Questo link di risposta è scaduto (validità 30 giorni).</p>
-      <p>Contatta direttamente il professionista.</p>
+      <h1 id="txt-scaduto-titolo">Link scaduto</h1>
+      <p id="txt-scaduto-sub1">Questo link di risposta è scaduto (validità 30 giorni).</p>
+      <p id="txt-scaduto-sub2">Contatta direttamente il professionista.</p>
     </div>
   </div>
 
@@ -260,10 +252,10 @@
   <div id="stato-scaduto-commerciale">
     <div class="stato-warning">
       <div class="icon">📅</div>
-      <h1>Preventivo scaduto</h1>
-      <p>Questo preventivo non è più valido.</p>
-      <p>La data di scadenza era il <strong id="data-scadenza-commerciale">—</strong>.</p>
-      <p>Contatta il professionista per ricevere un preventivo aggiornato.</p>
+      <h1 id="txt-scaduto-comm-titolo">Preventivo scaduto</h1>
+      <p id="txt-scaduto-comm-sub1">Questo preventivo non è più valido.</p>
+      <p id="txt-scaduto-comm-sub2">La data di scadenza era il <strong id="data-scadenza-commerciale">—</strong>.</p>
+      <p id="txt-scaduto-comm-sub3">Contatta il professionista per ricevere un preventivo aggiornato.</p>
     </div>
   </div>
 
@@ -271,9 +263,9 @@
   <div id="stato-gia-risposto">
     <div class="stato-ok">
       <div class="icon">✅</div>
-      <h1>Già risposto</h1>
-      <p>Hai già fornito una risposta a questo preventivo.</p>
-      <p>Contatta il professionista per ulteriori informazioni.</p>
+      <h1 id="txt-gia-risposto-titolo">Già risposto</h1>
+      <p id="txt-gia-risposto-sub1">Hai già fornito una risposta a questo preventivo.</p>
+      <p id="txt-gia-risposto-sub2">Contatta il professionista per ulteriori informazioni.</p>
     </div>
   </div>
 
@@ -308,6 +300,148 @@
   const uid = params.get('uid') || '';
   const pid = parseInt(params.get('pid') || '0');
   const scadenzaParam = params.get('scadenza');
+  const lang = params.get('lang') === 'en' ? 'en' : 'it';
+
+  // ── TRADUZIONI ────────────────────────────────────────────────────────────
+
+  const t = {
+    it: {
+      verifica: 'Verifica in corso...',
+      titoloPrincipale: 'Risposta al Preventivo',
+      ricevutoDa: 'Hai ricevuto un preventivo da:',
+      labelProfessionista: 'Professionista',
+      labelPreventivo: 'Preventivo n.',
+      btnRispondi: 'Rispondi al preventivo',
+      privacyAccetto: 'Accetto il trattamento dei miei dati personali.',
+      privacyLeggi: "Leggi l'informativa",
+      confermaTitolo: 'Conferma la tua risposta',
+      preventivoDi: 'Preventivo di',
+      btnAccetta: 'Accetto',
+      btnRifiuta: 'Rifiuto',
+      rispostaNota: 'La tua risposta verrà registrata e il professionista riceverà una notifica.',
+      professionistaNotificato: 'Il professionista è stato notificato. Puoi chiudere questa pagina.',
+      linkNonValido: 'Link non valido',
+      linkNonValidoSub: 'Questo link non è valido o si è verificato un errore.',
+      contatta: 'Contatta direttamente il professionista.',
+      annullatoTitolo: 'Preventivo annullato',
+      annullatoSub1: 'Questo preventivo è stato modificato o annullato dal professionista.',
+      annullatoSub2: 'Il link non è più attivo.',
+      annullatoSub3: 'Contatta direttamente il professionista per ricevere un preventivo aggiornato.',
+      scadutoTitolo: 'Link scaduto',
+      scadutoSub1: 'Questo link di risposta è scaduto (validità 30 giorni).',
+      scadutoSub2: 'Contatta direttamente il professionista.',
+      scadutoCommTitolo: 'Preventivo scaduto',
+      scadutoCommSub1: 'Questo preventivo non è più valido.',
+      scadutoCommSub2pre: 'La data di scadenza era il',
+      scadutoCommSub3: 'Contatta il professionista per ricevere un preventivo aggiornato.',
+      giaRispostoTitolo: 'Già risposto',
+      giaRispostoSub1: 'Hai già fornito una risposta a questo preventivo.',
+      giaRispostoSub2: 'Contatta il professionista per ulteriori informazioni.',
+      successoAccettatoTitolo: 'Preventivo accettato!',
+      successoAccettatoTesto: 'Hai accettato il preventivo.<br>Il professionista riceverà una notifica.',
+      successoRifiutatoTitolo: 'Preventivo rifiutato',
+      successoRifiutatoTesto: 'Hai rifiutato il preventivo.<br>Il professionista riceverà una notifica.',
+      privacyContenuto: `
+        <p>Cliccando "Accetto" o "Rifiuto", la tua risposta verrà registrata su server sicuri in Europa (Google Cloud/Firebase) e comunicata al professionista.</p>
+        <p><strong>Dati trattati:</strong> risposta al preventivo (accettato/rifiutato), data e ora, numero preventivo, consenso prestato.</p>
+        <p><strong>Finalità:</strong> esclusivamente per aggiornare lo stato del preventivo nel sistema del professionista.</p>
+        <p><strong>Conservazione:</strong> per il tempo necessario alla gestione del preventivo.</p>
+        <p><strong>Titolare:</strong> il professionista che ti ha inviato il preventivo. PrevisFast fornisce solo lo strumento tecnico.</p>
+        <p><strong>Tuoi diritti:</strong> rivolgiti direttamente al professionista per esercitare i diritti GDPR.</p>
+        <p>Informativa completa: <a href="https://previsfast.it/privacy" target="_blank">previsfast.it/privacy</a></p>
+      `
+    },
+    en: {
+      verifica: 'Verifying...',
+      titoloPrincipale: 'Quote Response',
+      ricevutoDa: 'You have received a quote from:',
+      labelProfessionista: 'Professional',
+      labelPreventivo: 'Quote n.',
+      btnRispondi: 'Respond to the quote',
+      privacyAccetto: 'I accept the processing of my personal data.',
+      privacyLeggi: 'Read the privacy notice',
+      confermaTitolo: 'Confirm your response',
+      preventivoDi: 'Quote from',
+      btnAccetta: 'Accept',
+      btnRifiuta: 'Decline',
+      rispostaNota: 'Your response will be recorded and the professional will be notified.',
+      professionistaNotificato: 'The professional has been notified. You can close this page.',
+      linkNonValido: 'Invalid link',
+      linkNonValidoSub: 'This link is not valid or an error occurred.',
+      contatta: 'Please contact the professional directly.',
+      annullatoTitolo: 'Quote cancelled',
+      annullatoSub1: 'This quote has been modified or cancelled by the professional.',
+      annullatoSub2: 'The link is no longer active.',
+      annullatoSub3: 'Please contact the professional directly for an updated quote.',
+      scadutoTitolo: 'Link expired',
+      scadutoSub1: 'This response link has expired (valid for 30 days).',
+      scadutoSub2: 'Please contact the professional directly.',
+      scadutoCommTitolo: 'Quote expired',
+      scadutoCommSub1: 'This quote is no longer valid.',
+      scadutoCommSub2pre: 'The expiry date was',
+      scadutoCommSub3: 'Please contact the professional for an updated quote.',
+      giaRispostoTitolo: 'Already responded',
+      giaRispostoSub1: 'You have already responded to this quote.',
+      giaRispostoSub2: 'Please contact the professional for further information.',
+      successoAccettatoTitolo: 'Quote accepted!',
+      successoAccettatoTesto: 'You have accepted the quote.<br>The professional will be notified.',
+      successoRifiutatoTitolo: 'Quote declined',
+      successoRifiutatoTesto: 'You have declined the quote.<br>The professional will be notified.',
+      privacyContenuto: `
+        <p>By clicking "Accept" or "Decline", your response will be recorded on secure servers in Europe (Google Cloud/Firebase) and communicated to the professional.</p>
+        <p><strong>Data processed:</strong> quote response (accepted/declined), date and time, quote number, consent given.</p>
+        <p><strong>Purpose:</strong> solely to update the status of the quote in the professional's system.</p>
+        <p><strong>Retention:</strong> for the time necessary to manage the quote.</p>
+        <p><strong>Controller:</strong> the professional who sent you the quote. PrevisFast only provides the technical tool.</p>
+        <p><strong>Your rights:</strong> contact the professional directly to exercise your GDPR rights.</p>
+        <p>Full privacy policy: <a href="https://previsfast.it/privacy" target="_blank">previsfast.it/privacy</a></p>
+      `
+    }
+  };
+
+  const T = t[lang];
+
+  // ── APPLICA TRADUZIONI ────────────────────────────────────────────────────
+
+  function applicaTraduzioni() {
+    document.getElementById('txt-verifica').textContent = T.verifica;
+    document.getElementById('txt-titolo-principale').textContent = T.titoloPrincipale;
+    document.getElementById('txt-ricevuto-da').textContent = T.ricevutoDa;
+    document.getElementById('txt-label-professionista').textContent = T.labelProfessionista;
+    document.getElementById('txt-label-preventivo').textContent = T.labelPreventivo;
+    document.getElementById('txt-btn-rispondi').textContent = T.btnRispondi;
+    document.getElementById('txt-privacy-accetto').textContent = T.privacyAccetto + ' ';
+    document.getElementById('txt-privacy-leggi').textContent = T.privacyLeggi;
+    document.getElementById('privacy-content-text').innerHTML = T.privacyContenuto;
+    document.getElementById('txt-conferma-titolo').textContent = T.confermaTitolo;
+    document.getElementById('txt-btn-accetta').textContent = T.btnAccetta;
+    document.getElementById('txt-btn-rifiuta').textContent = T.btnRifiuta;
+    document.getElementById('txt-risposta-nota').textContent = T.rispostaNota;
+    document.getElementById('txt-professionista-notificato').textContent = T.professionistaNotificato;
+    document.getElementById('txt-link-non-valido').textContent = T.linkNonValido;
+    document.getElementById('txt-link-non-valido-sub').textContent = T.linkNonValidoSub;
+    document.getElementById('txt-contatta').textContent = T.contatta;
+    document.getElementById('txt-annullato-titolo').textContent = T.annullatoTitolo;
+    document.getElementById('txt-annullato-sub1').textContent = T.annullatoSub1;
+    document.getElementById('txt-annullato-sub2').textContent = T.annullatoSub2;
+    document.getElementById('txt-annullato-sub3').textContent = T.annullatoSub3;
+    document.getElementById('txt-scaduto-titolo').textContent = T.scadutoTitolo;
+    document.getElementById('txt-scaduto-sub1').textContent = T.scadutoSub1;
+    document.getElementById('txt-scaduto-sub2').textContent = T.scadutoSub2;
+    document.getElementById('txt-scaduto-comm-titolo').textContent = T.scadutoCommTitolo;
+    document.getElementById('txt-scaduto-comm-sub1').textContent = T.scadutoCommSub1;
+    document.getElementById('txt-scaduto-comm-sub3').textContent = T.scadutoCommSub3;
+    document.getElementById('txt-gia-risposto-titolo').textContent = T.giaRispostoTitolo;
+    document.getElementById('txt-gia-risposto-sub1').textContent = T.giaRispostoSub1;
+    document.getElementById('txt-gia-risposto-sub2').textContent = T.giaRispostoSub2;
+    document.title = lang === 'en'
+      ? 'Quote Response — PrevisFast'
+      : 'Risposta Preventivo — PrevisFast';
+  }
+
+  applicaTraduzioni();
+
+  // ── LOGICA ────────────────────────────────────────────────────────────────
 
   function mostra(id) {
     ['stato-caricamento','stato-principale','stato-scelta','stato-successo',
@@ -333,25 +467,29 @@
   window.mostraScelta = function() {
     document.getElementById('nome-azienda-scelta').textContent = nomeAzienda;
     document.getElementById('numero-preventivo-scelta').textContent = numeroPreventivo;
+    document.getElementById('txt-preventivo-di').innerHTML =
+      T.preventivoDi + ' <strong id="nome-azienda-scelta">' + nomeAzienda + '</strong>';
     mostra('stato-scelta');
   };
 
-  function formatDataItaliana(dataStr) {
+  function formatData(dataStr) {
     const d = new Date(dataStr);
-    return d.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    return lang === 'en'
+      ? d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
+      : d.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
   }
 
   async function init() {
     if (!token || token.length < 32) { mostra('stato-errore'); return; }
     if (!uid || uid.length === 0) { mostra('stato-errore'); return; }
 
-    // Controlla scadenza commerciale
     if (scadenzaParam) {
       const dataScadenza = new Date(scadenzaParam);
       dataScadenza.setHours(23, 59, 59, 999);
       if (new Date() > dataScadenza) {
-        document.getElementById('data-scadenza-commerciale').textContent =
-          formatDataItaliana(scadenzaParam);
+        const dataFormattata = formatData(scadenzaParam);
+        document.getElementById('txt-scaduto-comm-sub2').innerHTML =
+          T.scadutoCommSub2pre + ' <strong id="data-scadenza-commerciale">' + dataFormattata + '</strong>.';
         mostra('stato-scaduto-commerciale');
         return;
       }
@@ -363,12 +501,10 @@
 
       if (rispostaSnap.exists()) {
         const data = rispostaSnap.data();
-        // Token invalidato dall'app (preventivo modificato o eliminato)
         if (data.invalidato === true) {
           mostra('stato-invalidato');
           return;
         }
-        // Risposta già data dal cliente
         mostra('stato-gia-risposto');
         return;
       }
@@ -387,13 +523,13 @@
     const btns = document.querySelectorAll('button');
     btns.forEach(b => b.disabled = true);
 
-    // Doppio controllo scadenza commerciale
     if (scadenzaParam) {
       const dataScadenza = new Date(scadenzaParam);
       dataScadenza.setHours(23, 59, 59, 999);
       if (new Date() > dataScadenza) {
-        document.getElementById('data-scadenza-commerciale').textContent =
-          formatDataItaliana(scadenzaParam);
+        const dataFormattata = formatData(scadenzaParam);
+        document.getElementById('txt-scaduto-comm-sub2').innerHTML =
+          T.scadutoCommSub2pre + ' <strong>' + dataFormattata + '</strong>.';
         mostra('stato-scaduto-commerciale');
         return;
       }
@@ -402,7 +538,6 @@
     try {
       const rispostaRef = doc(db, 'risposte_preventivo', token);
 
-      // Doppio controllo invalidazione prima di scrivere
       const snapCheck = await getDoc(rispostaRef);
       if (snapCheck.exists() && snapCheck.data().invalidato === true) {
         mostra('stato-invalidato');
@@ -420,13 +555,11 @@
       });
 
       if (stato === 'accettato') {
-        document.getElementById('titolo-successo').textContent = 'Preventivo accettato!';
-        document.getElementById('testo-successo').innerHTML =
-          'Hai accettato il preventivo.<br>Il professionista riceverà una notifica.';
+        document.getElementById('titolo-successo').textContent = T.successoAccettatoTitolo;
+        document.getElementById('testo-successo').innerHTML = T.successoAccettatoTesto;
       } else {
-        document.getElementById('titolo-successo').textContent = 'Preventivo rifiutato';
-        document.getElementById('testo-successo').innerHTML =
-          'Hai rifiutato il preventivo.<br>Il professionista riceverà una notifica.';
+        document.getElementById('titolo-successo').textContent = T.successoRifiutatoTitolo;
+        document.getElementById('testo-successo').innerHTML = T.successoRifiutatoTesto;
       }
       mostra('stato-successo');
 
