@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — PrevisFast</title>
+<style>
+  :root {
+    --blu: #1a237e;
+    --blu-chiaro: #283593;
+    --gold: #f9a825;
+    --grigio: #616161;
+    --grigio-chiaro: #f5f5f5;
+    --bordo: #e0e0e0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f5f5;
+    color: #212121;
+    padding: 24px 16px;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--blu);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .logo span { color: var(--gold); }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(to right, var(--blu), var(--blu-chiaro));
+    border-radius: 2px;
+    margin: 12px auto 16px;
+    max-width: 200px;
+  }
+
+  header p {
+    font-size: 14px;
+    color: var(--grigio);
+  }
+
+  .lang-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .lang-btn {
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 2px solid var(--blu);
+    background: white;
+    color: var(--blu);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn.active {
+    background: var(--blu);
+    color: white;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blu);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 28px 0 10px;
+    padding-left: 4px;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid var(--bordo);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #212121;
+    line-height: 1.4;
+  }
+
+  .faq-question:hover { background: var(--grigio-chiaro); }
+
+  .faq-icon {
+    font-size: 18px;
+    color: var(--blu);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-answer {
+    display: none;
+    padding: 0 20px 16px;
+    font-size: 13px;
+    color: var(--grigio);
+    line-height: 1.7;
+    border-top: 1px solid var(--bordo);
+  }
+
+  .faq-item.open .faq-answer { display: block; }
+
+  .faq-answer p { margin-bottom: 8px; }
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .faq-answer ul { margin: 8px 0 8px 18px; }
+  .faq-answer ul li { margin-bottom: 4px; }
+  .faq-answer strong { color: #212121; }
+  .faq-answer .warning {
+    background: #fff8e1;
+    border: 1px solid #f9a825;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #e65100;
+  }
+  .faq-answer .info {
+    background: #e8eaf6;
+    border: 1px solid #9fa8da;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--blu);
+  }
+
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 11px;
+    color: #bdbdbd;
+    padding-bottom: 24px;
+  }
+  footer a { color: #bdbdbd; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">Previs<span>Fast</span></div>
+    <div class="divider"></div>
+    <p id="header-sub">Domande frequenti</p>
+  </header>
+
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('it')">🇮🇹 Italiano</button>
+    <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+
+  <div id="faq-content"></div>
+
+  <footer>
+    <a href="https://previsfast.it/privacy" target="_blank">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:privacy@previsfast.it">Supporto</a>
+    &nbsp;·&nbsp; PrevisFast © 2026
+  </footer>
+
+</div>
+
+<script>
+const faq = {
+  it: {
+    headerSub: 'Domande frequenti',
+    sections: [
+      {
+        title: 'Generale',
+        items: [
+          {
+            q: "Cos'è PrevisFast?",
+            a: '<p>PrevisFast è un\'app per creare e gestire preventivi professionali direttamente dal tuo smartphone. Puoi creare preventivi in pochi secondi, inviarli ai tuoi clienti come PDF e ricevere una risposta digitale.</p>'
+          },
+          {
+            q: 'I miei dati sono al sicuro?',
+            a: '<p>Sì. Tutti i tuoi dati (preventivi, clienti, catalogo) sono salvati <strong>solo sul tuo dispositivo</strong> e protetti dalla cifratura del sistema Android (AES-256).</p><p>I dati non vengono mai caricati su server esterni, ad eccezione delle risposte digitali ai preventivi che transitano su Firebase (Google Cloud, server in Europa).</p>'
+          },
+          {
+            q: "L'app funziona senza internet?",
+            a: '<p>Sì, quasi tutte le funzioni sono disponibili offline:</p><ul><li>Creazione e modifica preventivi ✓</li><li>Gestione clienti e catalogo ✓</li><li>Generazione PDF ✓</li></ul><p>Richiedono connessione:</p><ul><li>Risposta digitale al preventivo (notifica in tempo reale)</li><li>Attivazione e verifica abbonamento Premium</li></ul>'
+          },
+          {
+            q: "Come cambio la lingua dell'app?",
+            a: '<p>Vai in <strong>Impostazioni → Lingua</strong> e seleziona Italiano o English. La lingua cambia immediatamente in tutta l\'app, inclusi i PDF generati.</p>'
+          },
+        ]
+      },
+      {
+        title: 'Preventivi',
+        items: [
+          {
+            q: 'Come creo un preventivo?',
+            a: '<p>Dalla schermata home o dalla sezione Preventivi, tocca il pulsante <strong>"+ Nuovo Preventivo"</strong>. Seleziona un cliente, aggiungi le voci con descrizione, quantità e prezzo, imposta IVA e valuta, poi tocca "Crea Preventivo".</p>'
+          },
+          {
+            q: 'Come funziona il pulsante "Modifica — torna a bozza" su un preventivo inviato o accettato?',
+            a: '<p>Quando un preventivo è in stato <strong>Inviato</strong> o <strong>Accettato</strong>, puoi toccarlo per riaprirlo e modificarlo. Apparirà un banner con il pulsante "Modifica — torna a bozza".</p><p>Toccando il pulsante:</p><ul><li>Il preventivo torna in stato <strong>Bozza</strong></li><li>Il link di risposta inviato al cliente diventa <strong>non più valido</strong></li><li>Il cliente non potrà più rispondere tramite il link precedente</li><li>L\'app apre direttamente il form di modifica</li></ul><div class="warning">⚠️ Attenzione: se il cliente aveva già risposto tramite il link, quella risposta viene ignorata. Dovrai inviare un nuovo preventivo al cliente.</div>'
+          },
+          {
+            q: 'Posso eliminare un preventivo inviato o accettato?',
+            a: '<p>I preventivi in stato <strong>Inviato</strong> o <strong>Accettato</strong> <strong>non possono essere eliminati direttamente</strong>.</p><p>Per eliminarli devi prima riportarli in bozza:</p><ul><li>Apri il preventivo</li><li>Tocca il pulsante <strong>"Modifica — torna a bozza"</strong> nel banner</li><li>Conferma il passaggio in bozza</li><li>Ora puoi eliminarlo dalla schermata di dettaglio o con lo swipe nella lista</li></ul><p>Possono essere eliminati direttamente:</p><ul><li><strong>Bozza</strong> — con una conferma</li><li><strong>Rifiutato</strong> — con una conferma</li><li><strong>Scaduto</strong> — con una conferma</li><li><strong>Incassato</strong> — con doppia conferma</li></ul><div class="warning">⚠️ Quando torni in bozza da Inviato o Accettato, il link di risposta inviato al cliente diventa non valido automaticamente. Il cliente vedrà "Preventivo annullato" se prova ad aprire il link.</div>'
+          },
+          {
+            q: 'Quali stati può avere un preventivo?',
+            a: '<ul><li><strong>Bozza</strong> — creato ma non ancora inviato, modificabile liberamente</li><li><strong>Inviato</strong> — PDF condiviso con il cliente, in attesa di risposta</li><li><strong>Accettato</strong> — il cliente ha accettato tramite link digitale o manualmente</li><li><strong>Incassato</strong> — pagamento ricevuto</li><li><strong>Rifiutato</strong> — il cliente ha rifiutato</li><li><strong>Scaduto</strong> — nessuna risposta entro 30 giorni dall\'invio, oppure superata la data di scadenza impostata dal professionista nel preventivo</li></ul>'
+          },
+          {
+            q: 'Come funziona la risposta digitale al preventivo?',
+            a: '<p>Con PrevisFast Premium, il PDF del preventivo contiene un pulsante verde "Rispondi al preventivo". Il cliente tocca il pulsante, si apre una pagina web dove può accettare o rifiutare.</p><p>Appena risponde, ricevi una notifica immediata nell\'app e lo stato del preventivo si aggiorna automaticamente.</p><div class="info">ℹ️ Il link è valido per 30 giorni. Se modifichi o elimini il preventivo, il link viene invalidato automaticamente.</div>'
+          },
+        ]
+      },
+      {
+        title: 'Backup e Dati',
+        items: [
+          {
+            q: 'Come faccio il backup dei miei dati?',
+            a: '<p>Vai in <strong>Impostazioni → Esporta dati JSON</strong>. Si apre il menu di condivisione dove puoi scegliere dove salvare il backup:</p><ul><li><strong>Google Drive</strong> — consigliato, persiste anche se disinstalli l\'app</li><li><strong>Email</strong> — invia a te stesso</li><li><strong>WhatsApp</strong> — salvalo in una chat con te stesso</li><li><strong>Downloads</strong> — salvato localmente sul dispositivo</li></ul><div class="warning">⚠️ I dati nell\'app sono salvati solo sul dispositivo. Se disinstalli l\'app senza fare un backup, i dati vengono persi definitivamente.</div>'
+          },
+          {
+            q: 'Come ripristino un backup?',
+            a: '<p>Vai in <strong>Impostazioni → Importa backup JSON</strong>. Si apre il selettore file — naviga fino al file di backup salvato in precedenza (Google Drive, Downloads, ecc.) e selezionalo.</p><p>I dati vengono importati senza sovrascrivere quelli esistenti — i duplicati vengono ignorati automaticamente.</p>'
+          },
+          {
+            q: "Cosa succede ai miei dati se disinstallo l'app?",
+            a: '<p>Tutti i dati locali (preventivi, clienti, catalogo, impostazioni) vengono eliminati definitivamente. <strong>Fai sempre un backup prima di disinstallare.</strong></p><p>I dati su Firebase (risposte ai preventivi, stato abbonamento) rimangono sui server Google fino alla tua eventuale richiesta di cancellazione.</p>'
+          },
+          {
+            q: 'Come richiedo la cancellazione dei miei dati?',
+            a: '<p>Invia una email a <strong>privacy@previsfast.it</strong> con oggetto "Richiesta cancellazione dati" specificando l\'email del tuo account Google utilizzato nell\'app.</p><p>Provvederemo alla cancellazione entro 30 giorni come previsto dal GDPR.</p>'
+          },
+        ]
+      },
+      {
+        title: 'Premium',
+        items: [
+          {
+            q: 'Cosa include il piano Premium?',
+            a: '<ul><li>Preventivi, clienti, categorie e voci illimitati</li><li>PDF illimitati</li><li>Risposta digitale al preventivo con notifica in tempo reale</li><li>Logo aziendale personalizzato nei PDF</li><li>Export e Import dati (backup)</li></ul>'
+          },
+          {
+            q: 'Quanto costa Premium?',
+            a: '<p><strong>€19,99/anno</strong> con rinnovo automatico tramite Google Play. Equivale a meno di €1,67 al mese.</p>'
+          },
+          {
+            q: "Come disdico l'abbonamento?",
+            a: '<p>Puoi disdire in qualsiasi momento da Google Play:</p><ul><li>Apri il Play Store</li><li>Tocca la tua foto profilo in alto a destra</li><li>Vai in Pagamenti e abbonamenti → Abbonamenti</li><li>Seleziona PrevisFast → Annulla abbonamento</li></ul><p>L\'accesso Premium rimane attivo fino alla fine del periodo già pagato.</p>'
+          },
+          {
+            q: "Ho perso l'accesso Premium dopo aver reinstallato l'app, cosa faccio?",
+            a: '<p>Vai in <strong>Impostazioni → Passa a Premium → Ripristina acquisti precedenti</strong>. L\'app verificherà l\'abbonamento attivo sul tuo account Google e ripristinerà il Premium.</p>'
+          },
+        ]
+      },
+      {
+        title: 'Supporto',
+        items: [
+          {
+            q: 'Come contatto il supporto?',
+            a: '<p>Scrivici a <strong>privacy@previsfast.it</strong> per qualsiasi problema o domanda. Rispondiamo entro 2 giorni lavorativi.</p>'
+          },
+          {
+            q: 'Come segnalo un bug?',
+            a: '<p>Puoi segnalare bug tramite:</p><ul><li>Email a <strong>privacy@previsfast.it</strong> con una descrizione del problema e il modello del tuo dispositivo</li><li>Feedback privato sulla scheda Play Store (tocca "Scrivi feedback")</li></ul>'
+          },
+        ]
+      },
+    ]
+  },
+  en: {
+    headerSub: 'Frequently Asked Questions',
+    sections: [
+      {
+        title: 'General',
+        items: [
+          {
+            q: 'What is PrevisFast?',
+            a: '<p>PrevisFast is an app to create and manage professional quotes directly from your smartphone. You can create quotes in seconds, send them to your clients as PDFs and receive a digital response.</p>'
+          },
+          {
+            q: 'Is my data safe?',
+            a: '<p>Yes. All your data (quotes, clients, catalog) is saved <strong>only on your device</strong> and protected by Android system encryption (AES-256).</p><p>Data is never uploaded to external servers, except for digital quote responses which transit through Firebase (Google Cloud, servers in Europe).</p>'
+          },
+          {
+            q: 'Does the app work without internet?',
+            a: '<p>Yes, almost all features are available offline:</p><ul><li>Creating and editing quotes ✓</li><li>Managing clients and catalog ✓</li><li>PDF generation ✓</li></ul><p>These require a connection:</p><ul><li>Digital quote response (real-time notification)</li><li>Activating and verifying Premium subscription</li></ul>'
+          },
+          {
+            q: 'How do I change the app language?',
+            a: '<p>Go to <strong>Settings → Language</strong> and select Italiano or English. The language changes immediately throughout the app, including generated PDFs.</p>'
+          },
+        ]
+      },
+      {
+        title: 'Quotes',
+        items: [
+          {
+            q: 'How do I create a quote?',
+            a: '<p>From the home screen or the Quotes section, tap the <strong>"+ New Quote"</strong> button. Select a client, add items with description, quantity and price, set VAT and currency, then tap "Create Quote".</p>'
+          },
+          {
+            q: 'How does the "Edit — back to draft" button work on a sent or accepted quote?',
+            a: '<p>When a quote is in <strong>Sent</strong> or <strong>Accepted</strong> status, you can tap to reopen and edit it. A banner will appear with the "Edit — back to draft" button.</p><p>Tapping the button:</p><ul><li>The quote returns to <strong>Draft</strong> status</li><li>The response link sent to the client becomes <strong>no longer valid</strong></li><li>The client will no longer be able to respond via the previous link</li><li>The app directly opens the edit form</li></ul><div class="warning">⚠️ Warning: if the client had already responded via the link, that response is ignored. You will need to send a new quote to the client.</div>'
+          },
+          {
+            q: 'Can I delete a sent or accepted quote?',
+            a: '<p>Quotes in <strong>Sent</strong> or <strong>Accepted</strong> status <strong>cannot be deleted directly</strong>.</p><p>To delete them you must first move them back to draft:</p><ul><li>Open the quote</li><li>Tap the <strong>"Edit — back to draft"</strong> button in the banner</li><li>Confirm the move to draft</li><li>Now you can delete it from the detail screen or by swiping in the list</li></ul><p>These can be deleted directly:</p><ul><li><strong>Draft</strong> — with one confirmation</li><li><strong>Rejected</strong> — with one confirmation</li><li><strong>Expired</strong> — with one confirmation</li><li><strong>Earned</strong> — with double confirmation</li></ul><div class="warning">⚠️ When you move back to draft from Sent or Accepted, the response link sent to the client becomes automatically invalid. The client will see "Quote cancelled" if they try to open the link.</div>'
+          },
+          {
+            q: 'What statuses can a quote have?',
+            a: '<ul><li><strong>Draft</strong> — created but not yet sent, freely editable</li><li><strong>Sent</strong> — PDF shared with client, awaiting response</li><li><strong>Accepted</strong> — client accepted via digital link or manually</li><li><strong>Earned</strong> — payment received</li><li><strong>Rejected</strong> — client declined</li><li><strong>Expired</strong> — no response within 30 days of sending, or past the expiry date set by the professional in the quote</li></ul>'
+          },
+          {
+            q: 'How does the digital quote response work?',
+            a: '<p>With PrevisFast Premium, the quote PDF contains a green "Respond to quote" button. The client taps the button, a web page opens where they can accept or decline.</p><p>As soon as they respond, you receive an immediate notification in the app and the quote status updates automatically.</p><div class="info">ℹ️ The link is valid for 30 days. If you modify or delete the quote, the link is automatically invalidated.</div>'
+          },
+        ]
+      },
+      {
+        title: 'Backup & Data',
+        items: [
+          {
+            q: 'How do I back up my data?',
+            a: '<p>Go to <strong>Settings → Export JSON data</strong>. The share menu opens where you can choose where to save the backup:</p><ul><li><strong>Google Drive</strong> — recommended, persists even if you uninstall the app</li><li><strong>Email</strong> — send to yourself</li><li><strong>WhatsApp</strong> — save in a chat with yourself</li><li><strong>Downloads</strong> — saved locally on the device</li></ul><div class="warning">⚠️ Data in the app is saved only on the device. If you uninstall the app without making a backup, data is permanently lost.</div>'
+          },
+          {
+            q: 'How do I restore a backup?',
+            a: '<p>Go to <strong>Settings → Import JSON backup</strong>. The file picker opens — navigate to the previously saved backup file (Google Drive, Downloads, etc.) and select it.</p><p>Data is imported without overwriting existing data — duplicates are automatically ignored.</p>'
+          },
+          {
+            q: 'What happens to my data if I uninstall the app?',
+            a: '<p>All local data (quotes, clients, catalog, settings) is permanently deleted. <strong>Always make a backup before uninstalling.</strong></p><p>Data on Firebase (quote responses, subscription status) remains on Google servers until your deletion request.</p>'
+          },
+          {
+            q: 'How do I request deletion of my data?',
+            a: '<p>Send an email to <strong>privacy@previsfast.it</strong> with subject "Data deletion request" specifying the email of your Google account used in the app.</p><p>We will process the deletion within 30 days as required by GDPR.</p>'
+          },
+        ]
+      },
+      {
+        title: 'Premium',
+        items: [
+          {
+            q: 'What does the Premium plan include?',
+            a: '<ul><li>Unlimited quotes, clients, categories and items</li><li>Unlimited PDFs</li><li>Digital quote response with real-time notification</li><li>Custom company logo in PDFs</li><li>Data export and import (backup)</li></ul>'
+          },
+          {
+            q: 'How much does Premium cost?',
+            a: "<p><strong>€19.99/year</strong> with automatic renewal via Google Play. That's less than €1.67 per month.</p>"
+          },
+          {
+            q: 'How do I cancel my subscription?',
+            a: '<p>You can cancel at any time from Google Play:</p><ul><li>Open the Play Store</li><li>Tap your profile photo in the top right</li><li>Go to Payments & subscriptions → Subscriptions</li><li>Select PrevisFast → Cancel subscription</li></ul><p>Premium access remains active until the end of the already paid period.</p>'
+          },
+          {
+            q: 'I lost Premium access after reinstalling the app, what do I do?',
+            a: '<p>Go to <strong>Settings → Go Premium → Restore previous purchases</strong>. The app will verify the active subscription on your Google account and restore Premium.</p>'
+          },
+        ]
+      },
+      {
+        title: 'Support',
+        items: [
+          {
+            q: 'How do I contact support?',
+            a: '<p>Write to us at <strong>privacy@previsfast.it</strong> for any issue or question. We respond within 2 business days.</p>'
+          },
+          {
+            q: 'How do I report a bug?',
+            a: '<p>You can report bugs via:</p><ul><li>Email to <strong>privacy@previsfast.it</strong> with a description of the problem and your device model</li><li>Private feedback on the Play Store listing (tap "Write feedback")</li></ul>'
+          },
+        ]
+      },
+    ]
+  }
+};
+
+let currentLang = 'it';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn')[lang === 'it' ? 0 : 1].classList.add('active');
+  document.getElementById('header-sub').textContent = faq[lang].headerSub;
+  renderFaq(lang);
+}
+
+function renderFaq(lang) {
+  const data = faq[lang];
+  const container = document.getElementById('faq-content');
+  container.innerHTML = '';
+
+  data.sections.forEach(section => {
+    const titleEl = document.createElement('div');
+    titleEl.className = 'section-title';
+    titleEl.textContent = section.title;
+    container.appendChild(titleEl);
+
+    section.items.forEach((item) => {
+      const div = document.createElement('div');
+      div.className = 'faq-item';
+
+      const btn = document.createElement('button');
+      btn.className = 'faq-question';
+      btn.innerHTML = `<span>${item.q}</span><span class="faq-icon">+</span>`;
+      btn.onclick = () => div.classList.toggle('open');
+
+      const answer = document.createElement('div');
+      answer.className = 'faq-answer';
+      answer.innerHTML = item.a;
+
+      div.appendChild(btn);
+      div.appendChild(answer);
+      container.appendChild(div);
+    });
+  });
+}
+
+const urlLang = new URLSearchParams(window.location.search).get('lang');
+if (urlLang === 'en') setLang('en');
+else renderFaq('it');
+</script>
+</body>
+</html>
