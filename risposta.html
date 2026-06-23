@@ -82,7 +82,26 @@
   .btn-rispondi:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
   .btn-rispondi:not(:disabled) { box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4); }
 
-  .stato-ok { background: #e8f5e9; border-radius: 12px; padding: 20px; margin-top: 20px; }
+  .stato-ok {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border: 2px solid #4caf50;
+    border-radius: 16px;
+    padding: 28px 20px;
+    margin-top: 20px;
+  }
+  .stato-ok h1 { color: var(--verde); font-size: 22px; }
+  .stato-ok .icon { font-size: 72px; }
+
+  .stato-rifiutato {
+    background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    border: 2px solid #ef5350;
+    border-radius: 16px;
+    padding: 28px 20px;
+    margin-top: 20px;
+  }
+  .stato-rifiutato h1 { color: var(--rosso); font-size: 22px; }
+  .stato-rifiutato .icon { font-size: 72px; }
+
   .stato-errore { background: #ffebee; border-radius: 12px; padding: 20px; margin-top: 20px; }
   .stato-warning { background: #fff8e1; border-radius: 12px; padding: 20px; margin-top: 20px; }
 
@@ -135,6 +154,30 @@
 
   .footer { margin-top: 28px; font-size: 11px; color: #bdbdbd; }
   .footer a { color: #bdbdbd; }
+
+  /* Badge stato successo */
+  .badge-accettato {
+    display: inline-block;
+    background: var(--verde);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+  .badge-rifiutato {
+    display: inline-block;
+    background: var(--rosso);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
 
   #stato-caricamento { display: block; }
   #stato-principale { display: none; }
@@ -205,12 +248,10 @@
     </p>
   </div>
 
-  <!-- SUCCESSO -->
+  <!-- SUCCESSO — contenuto dinamico in base ad accettato/rifiutato -->
   <div id="stato-successo">
-    <div class="stato-ok">
-      <div class="icon">🎉</div>
-      <h1 id="titolo-successo">Risposta registrata</h1>
-      <p id="testo-successo">La tua risposta è stata registrata con successo.</p>
+    <div id="successo-inner">
+      <!-- popolato dinamicamente da JS -->
     </div>
     <p style="margin-top:16px; font-size:12px; color:#9e9e9e;" id="txt-professionista-notificato">
       Il professionista è stato notificato. Puoi chiudere questa pagina.
@@ -302,8 +343,6 @@
   const scadenzaParam = params.get('scadenza');
   const lang = params.get('lang') === 'en' ? 'en' : 'it';
 
-  // ── TRADUZIONI ────────────────────────────────────────────────────────────
-
   const t = {
     it: {
       verifica: 'Verifica in corso...',
@@ -337,10 +376,12 @@
       giaRispostoTitolo: 'Già risposto',
       giaRispostoSub1: 'Hai già fornito una risposta a questo preventivo.',
       giaRispostoSub2: 'Contatta il professionista per ulteriori informazioni.',
-      successoAccettatoTitolo: 'Preventivo accettato!',
+      successoAccettatoTitolo: '🎉 Preventivo accettato!',
       successoAccettatoTesto: 'Hai accettato il preventivo.<br>Il professionista riceverà una notifica.',
+      successoAccettatoBadge: '✅ ACCETTATO',
       successoRifiutatoTitolo: 'Preventivo rifiutato',
       successoRifiutatoTesto: 'Hai rifiutato il preventivo.<br>Il professionista riceverà una notifica.',
+      successoRifiutatoBadge: '❌ RIFIUTATO',
       privacyContenuto: `
         <p>Cliccando "Accetto" o "Rifiuto", la tua risposta verrà registrata su server sicuri in Europa (Google Cloud/Firebase) e comunicata al professionista.</p>
         <p><strong>Dati trattati:</strong> risposta al preventivo (accettato/rifiutato), data e ora, numero preventivo, consenso prestato.</p>
@@ -383,10 +424,12 @@
       giaRispostoTitolo: 'Already responded',
       giaRispostoSub1: 'You have already responded to this quote.',
       giaRispostoSub2: 'Please contact the professional for further information.',
-      successoAccettatoTitolo: 'Quote accepted!',
+      successoAccettatoTitolo: '🎉 Quote accepted!',
       successoAccettatoTesto: 'You have accepted the quote.<br>The professional will be notified.',
+      successoAccettatoBadge: '✅ ACCEPTED',
       successoRifiutatoTitolo: 'Quote declined',
       successoRifiutatoTesto: 'You have declined the quote.<br>The professional will be notified.',
+      successoRifiutatoBadge: '❌ DECLINED',
       privacyContenuto: `
         <p>By clicking "Accept" or "Decline", your response will be recorded on secure servers in Europe (Google Cloud/Firebase) and communicated to the professional.</p>
         <p><strong>Data processed:</strong> quote response (accepted/declined), date and time, quote number, consent given.</p>
@@ -400,8 +443,6 @@
   };
 
   const T = t[lang];
-
-  // ── APPLICA TRADUZIONI ────────────────────────────────────────────────────
 
   function applicaTraduzioni() {
     document.getElementById('txt-verifica').textContent = T.verifica;
@@ -440,8 +481,6 @@
   }
 
   applicaTraduzioni();
-
-  // ── LOGICA ────────────────────────────────────────────────────────────────
 
   function mostra(id) {
     ['stato-caricamento','stato-principale','stato-scelta','stato-successo',
@@ -554,13 +593,26 @@
         consenso_gdpr_at: new Date().toISOString(),
       });
 
+      // ── Differenziazione visiva accettato / rifiutato ──
+      const inner = document.getElementById('successo-inner');
       if (stato === 'accettato') {
-        document.getElementById('titolo-successo').textContent = T.successoAccettatoTitolo;
-        document.getElementById('testo-successo').innerHTML = T.successoAccettatoTesto;
+        inner.innerHTML = `
+          <div class="stato-ok">
+            <div class="icon">🎉</div>
+            <h1>${T.successoAccettatoTitolo}</h1>
+            <span class="badge-accettato">${T.successoAccettatoBadge}</span>
+            <p style="margin-top:14px">${T.successoAccettatoTesto}</p>
+          </div>`;
       } else {
-        document.getElementById('titolo-successo').textContent = T.successoRifiutatoTitolo;
-        document.getElementById('testo-successo').innerHTML = T.successoRifiutatoTesto;
+        inner.innerHTML = `
+          <div class="stato-rifiutato">
+            <div class="icon">😔</div>
+            <h1>${T.successoRifiutatoTitolo}</h1>
+            <span class="badge-rifiutato">${T.successoRifiutatoBadge}</span>
+            <p style="margin-top:14px">${T.successoRifiutatoTesto}</p>
+          </div>`;
       }
+
       mostra('stato-successo');
 
     } catch (e) {
